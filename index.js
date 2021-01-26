@@ -8,13 +8,26 @@ const passport = require("passport");
 const passportLocal = require("./config/passport-local-strategy");
 const connect = require("connect");
 const bcrypt = require("bcrypt");
+const sassMiddleware = require("node-sass-middleware");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
+const flash = require("connect-flash");
+const customMware = require("./config/middleware");
 
 app.use(express.urlencoded({ extended: true }));
 
 //for cookies
 app.use(cookieParser());
+
+app.use(
+  sassMiddleware({
+    src: "./assets/scss",
+    dest: "./assets/css",
+    debug: false,
+    outputStyle: "extended",
+    prefix: "/css",
+  })
+);
 
 //for layouts
 app.use(express.static("./assets"));
@@ -53,6 +66,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(passport.setAuthenticatedUser);
+
+//for connect-flash msgs
+app.use(flash());
+app.use(customMware.setFlash);
 
 app.use("/", require("./routes/index"));
 

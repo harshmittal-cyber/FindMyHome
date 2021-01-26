@@ -33,24 +33,29 @@ module.exports.create = function (req, res) {
   //FIND IF WE USER ALREADY EXIST AS A OWNER OR NOT
   Owner.findOne({ email: req.body.email }, function (err, user) {
     if (err) {
+      req.flash("error", err);
       console.log("Error in finding a user", err);
       return res.status(500).send("error occured");
     }
     if (user) {
+      req.flash("error", "User already exist");
       return res.status(500).send("Username already exist");
     }
 
     //CHECK IF PASSWORD MATCH WITH CONFIRM PASSWORD OR NOT
     if (req.body.password != req.body.confirm_password) {
+      req.flash("Password not matched");
       return res.redirect("back");
     }
     //CHECK IF MOBILE NO. IS OF 10 DIGITS OR NOT
     if (req.body.phone < 6000000000) {
+      req.flash("error", "Enter valid mobile number");
       return res.redirect("back");
     }
     //CREATE A USER
     User.findOne({ email: req.body.email }, function (err, user) {
       if (err) {
+        req.flash("error", err);
         console.log("Error in finding a user", err);
         return res.status(500).send("error occured");
       }
@@ -66,8 +71,10 @@ module.exports.create = function (req, res) {
             },
             function (err, user) {
               if (err) {
+                req.flash("error", err);
                 return res.status(500).send("Error in creating a user");
               }
+              req.flash("success", "User created successfully");
               return res.send(user);
             }
           );
@@ -80,10 +87,12 @@ module.exports.create = function (req, res) {
 };
 
 module.exports.createSession = function (req, res) {
+  req.flash("success", "Logged in successfully");
   return res.redirect("/users/profile");
 };
 
 module.exports.destroysession = function (req, res) {
+  req.flash("success", "LogOut successfully");
   req.logout();
   return res.redirect("/");
 };

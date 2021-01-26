@@ -10,19 +10,23 @@ passport.use(
     {
       usernameField: "email",
       passwordField: "password",
+      passReqToCallback: true,
     },
-    function (email, password, done) {
+    function (req, email, password, done) {
       User.findOne({ email: email }, function (err, user) {
         if (err) {
+          req.flash("error", err);
           return done(err);
         }
         if (!user) {
+          req.flash("error", "Invalid username or password");
           return done(null, false);
         }
 
         //compare password
         bcrypt.compare(password, user.password, function (err, result) {
           if (!result) {
+            req.flash("error", "Invalid username or password");
             return done(null, false);
           }
         });
@@ -39,18 +43,22 @@ passport.use(
     {
       usernameField: "email",
       passwordField: "password",
+      passReqToCallback: true,
     },
-    function (email, password, done) {
+    function (req, email, password, done) {
       Owner.findOne({ email: email }, function (err, user) {
         if (err) {
+          req.flash("error", err);
           return done(err);
         }
         if (!user) {
+          req.flash("error", "Invalid username or password");
           return done(null, false);
         }
         //compare password
         bcrypt.compare(password, user.password, function (err, result) {
           if (!result) {
+            req.flash("error", "Invalid username or password");
             return done(null, false);
           }
         });
@@ -60,13 +68,14 @@ passport.use(
   )
 );
 
-// //serialize a user means user.id is stored as cookie in browser
+// //serialize a user means user is stored as cookie in browser
 passport.serializeUser(function (user, done) {
   done(null, user);
 });
 
 //deserialize a user means it check in database whether the cookie is matched with id or not
 passport.deserializeUser(function (user, done) {
+  //now object is stored in req and can be acesses throught owner and users routes
   if (user != null) {
     done(null, user);
   }
