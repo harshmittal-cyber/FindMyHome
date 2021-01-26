@@ -3,7 +3,7 @@ const router = express.Router();
 const owner_controller = require("../controllers/ownercontroller");
 const passport = require("passport");
 
-router.get("/profile", owner_controller.owner);
+router.get("/profile", passport.checkAuthentication, owner_controller.owner);
 router.get("/signin", owner_controller.signin);
 router.get("/signup", owner_controller.signup);
 

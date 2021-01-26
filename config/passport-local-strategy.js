@@ -60,27 +60,22 @@ passport.use(
   )
 );
 
-//serialize a user means user.id is stored as cookie in browser
+// //serialize a user means user.id is stored as cookie in browser
 passport.serializeUser(function (user, done) {
-  done(null, user.id);
+  done(null, user);
 });
 
 //deserialize a user means it check in database whether the cookie is matched with id or not
-passport.deserializeUser(function (id, done) {
-  User.findById(id, function (err, user) {
-    if (err) {
-      console.log("Error in finding user");
-      return done(err);
-    }
-    return done(null, user);
-  });
+passport.deserializeUser(function (user, done) {
+  if (user != null) {
+    done(null, user);
+  }
 });
 
 passport.checkAuthentication = function (req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   }
-
   //if user is not signed in
   return res.redirect("/users/signin");
 };

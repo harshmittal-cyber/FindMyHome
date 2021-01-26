@@ -37,7 +37,7 @@ module.exports.create = function (req, res) {
       return res.redirect("back");
     }
     //CHECK IF MOBILE NO. IS OF 10 DIGITS OR NOT
-    if (req.body.phone < 1000000000) {
+    if (req.body.phone < 6000000000) {
       return res.redirect("back");
     }
     //CREATE THE OWNER
