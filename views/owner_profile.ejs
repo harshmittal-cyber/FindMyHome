@@ -1,0 +1,10 @@
+<h1>Hi landlord</h1>
+<% if(locals.user) {%>
+<p><%=user.name%></p>
+<p><%=user.email%></p>
+<p><%=user.phone%></p>
+<p><a href="/owner/destroysession">SignOut</a></p>
+<% }else{%>
+<p><a href="/owner/signin">SignIn</a></p>
+<p><a href="/owner/signup">Signup</a></p>
+<% } %>

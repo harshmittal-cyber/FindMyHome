@@ -1,19 +1,28 @@
-const { nextTick, exit } = require("process");
 const Owner = require("../models/owner");
 const User = require("../models/user");
-
+const bcrypt = require("bcrypt");
 module.exports.owner = function (req, res) {
-  return res.send("Hi LandLord");
+  return res.render("owner_profile", {
+    title: "FindMyHome || Profile",
+  });
 };
 
 module.exports.signin = function (req, res) {
+  if (req.isAuthenticated()) {
+    return res.redirect("/owner/profile");
+  }
   return res.render("owner_signin", {
-    title: "FindMyHome || Landlord",
+    title: "FindMyHome || OwnerSignin",
   });
 };
 
 module.exports.signup = function (req, res) {
-  return res.render("owner_signup.ejs");
+  if (req.isAuthenticated()) {
+    return res.redirect("/owner/profile");
+  }
+  return res.render("owner_signup", {
+    title: "FindMyHome || OwnerSignUp",
+  });
 };
 
 module.exports.create = function (req, res) {
@@ -38,16 +47,35 @@ module.exports.create = function (req, res) {
       }
 
       if (!user) {
-        //OWNER CREATED
-        Owner.create(req.body, function (err, user) {
-          if (err) {
-            console.log("Error in creating user", err);
-          }
-          return res.redirect("/owner/signin");
+        bcrypt.hash(req.body.password, 10, function (err, hash) {
+          Owner.create(
+            {
+              email: req.body.email,
+              password: hash,
+              name: req.body.name,
+              phone: req.body.phone,
+              place: req.body.place,
+            },
+            function (err, user) {
+              if (err) {
+                return res.status(500).send("Error in creating a user");
+              }
+              return res.send(user);
+            }
+          );
         });
       } else {
         return res.redirect("/owner/signin");
       }
     });
   });
+};
+
+module.exports.createSession = function (req, res) {
+  return res.redirect("/owner/profile");
+};
+
+module.exports.destroysession = function (req, res) {
+  req.logout();
+  return res.redirect("/");
 };
