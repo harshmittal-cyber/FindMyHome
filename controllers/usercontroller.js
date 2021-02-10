@@ -2,7 +2,7 @@ const User = require("../models/user");
 const Owner = require("../models/owner");
 const bcrypt = require("bcrypt");
 
-module.exports.user = function (req, res) {
+module.exports.profile = function (req, res) {
   return res.render("user_profile", {
     title: "FindMyHome || Profile",
   });
@@ -11,7 +11,7 @@ module.exports.user = function (req, res) {
 //rendering signin page
 module.exports.signin = function (req, res) {
   if (req.isAuthenticated()) {
-    return res.redirect("/users/profile");
+    return res.redirect("/");
   }
   return res.render("user_signin", {
     title: "FindMyHome || UserSignIn",
@@ -28,9 +28,33 @@ module.exports.signup = function (req, res) {
   });
 };
 
+// REGX* FOR VALIDATING NEW ENTERED EMAIL
+function validateEmail(email) {
+  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
+}
+
+// //IF TRUE
+// function validatePassword(password) {
+//   const re = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])([a-zA-Z0-9@$!%*?&]{8,})$/;
+//   return re.test(password);
+// }
+
 //Create a user
 module.exports.create = function (req, res) {
   //FIND IF WE USER ALREADY EXIST AS A OWNER OR NOT
+  const email = req.body.email;
+
+  //checking if email is valid or not
+  if (!validateEmail(email)) {
+    req.flash("error", "Enter a valid email");
+    return res.redirect("back");
+  }
+
+  // if (!validatePassword(password)) {
+  //   req.flash("error", "Enter a valid password");
+  // }
+
   Owner.findOne({ email: req.body.email }, function (err, user) {
     if (err) {
       req.flash("error", err);
@@ -61,6 +85,7 @@ module.exports.create = function (req, res) {
       }
 
       if (!user) {
+        //encrypt the password
         bcrypt.hash(req.body.password, 10, function (err, hash) {
           User.create(
             {
@@ -75,7 +100,7 @@ module.exports.create = function (req, res) {
                 return res.status(500).send("Error in creating a user");
               }
               req.flash("success", "User created successfully");
-              return res.send(user);
+              return res.redirect("/users/signin");
             }
           );
         });
@@ -87,6 +112,7 @@ module.exports.create = function (req, res) {
 };
 
 module.exports.createSession = function (req, res) {
+  console.log(req.user.id);
   req.flash("success", "Logged in successfully");
   return res.redirect("/users/profile");
 };

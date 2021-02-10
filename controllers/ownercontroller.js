@@ -1,7 +1,8 @@
 const Owner = require("../models/owner");
 const User = require("../models/user");
 const bcrypt = require("bcrypt");
-module.exports.owner = function (req, res) {
+
+module.exports.profile = function (req, res) {
   return res.render("owner_profile", {
     title: "FindMyHome || Profile",
   });
@@ -9,7 +10,7 @@ module.exports.owner = function (req, res) {
 
 module.exports.signin = function (req, res) {
   if (req.isAuthenticated()) {
-    return res.redirect("/owner/profile");
+    return res.redirect("/");
   }
   return res.render("owner_signin", {
     title: "FindMyHome || OwnerSignin",
@@ -25,7 +26,21 @@ module.exports.signup = function (req, res) {
   });
 };
 
+// REGX* FOR VALIDATING NEW ENTERED EMAIL
+function validateEmail(email) {
+  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
+}
+
 module.exports.create = function (req, res) {
+  //FIND IF WE USER ALREADY EXIST AS A OWNER OR NOT
+  const email = req.body.email;
+
+  //checking if email is valid or not
+  if (!validateEmail(email)) {
+    req.flash("error", "Enter a valid email");
+    return res.redirect("back");
+  }
   //CHECK IF USER CREATED AS A CUSTOMER OR NOT
   User.findOne({ email: req.body.email }, function (err, user, cb) {
     if (user) {
@@ -60,7 +75,8 @@ module.exports.create = function (req, res) {
               if (err) {
                 return res.status(500).send("Error in creating a user");
               }
-              return res.send(user);
+              req.flash("success", "User created successfully");
+              return res.redirect("/owner/signin");
             }
           );
         });
@@ -73,9 +89,4 @@ module.exports.create = function (req, res) {
 
 module.exports.createSession = function (req, res) {
   return res.redirect("/owner/profile");
-};
-
-module.exports.destroysession = function (req, res) {
-  req.logout();
-  return res.redirect("/");
 };

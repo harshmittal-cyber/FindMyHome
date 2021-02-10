@@ -48,7 +48,7 @@ app.use(
     saveUninitialized: false,
     resave: false,
     cookie: {
-      maxAge: 1000 * 60 * 100,
+      maxAge: 1000 * 2 * 60 * 100,
     },
     store: new MongoStore(
       {
@@ -56,7 +56,7 @@ app.use(
         autoRemove: "disabled",
       },
       function (err) {
-        console.log(err || "monfo store session cookie");
+        console.log(err || "mongo store session cookie");
       }
     ),
   })
@@ -66,7 +66,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(passport.setAuthenticatedUser);
-
 //for connect-flash msgs
 app.use(flash());
 app.use(customMware.setFlash);

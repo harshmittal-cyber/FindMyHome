@@ -1,9 +1,6 @@
 <h1>Home page</h1>
 <% if(locals.user) {%>
 <p><%=user.name%></p>
-<p><%=user.email%></p>
-<p><%=user.phone%></p>
-<p><a href="/users/destroysession">SignOut</a></p>
 <% }else{%>
 <p><a href="/users/signin">Are you buyer</a></p>
 <p><a href="/owner/signin">Are you landlord</a></p>
