@@ -32,21 +32,24 @@ function validateEmail(email) {
   return re.test(String(email).toLowerCase());
 }
 
-module.exports.create = function (req, res) {
+module.exports.create = async function (req, res) {
   //FIND IF WE USER ALREADY EXIST AS A OWNER OR NOT
-  const email = req.body.email;
+  try {
+    const email = req.body.email;
 
-  //checking if email is valid or not
-  if (!validateEmail(email)) {
-    req.flash("error", "Enter a valid email");
-    return res.redirect("back");
-  }
-  //CHECK IF USER CREATED AS A CUSTOMER OR NOT
-  User.findOne({ email: req.body.email }, function (err, user, cb) {
-    if (user) {
-      console.log("Account already exist as a customer");
-      return res.redirect("/");
+    //checking if email is valid or not
+    if (!validateEmail(email)) {
+      req.flash("error", "Enter a valid email");
+      return res.redirect("back");
     }
+
+    let user = await User.findOne({ email: req.body.email });
+
+    if (user) {
+      req.flash("error", "User already exist as a Buyer");
+      return res.redirect("back");
+    }
+
     //CHECK IF PASSWORD MATCH WITH CONFIRM PASSWORD OR NOT
     if (req.body.password != req.body.confirm_password) {
       return res.redirect("back");
@@ -55,13 +58,11 @@ module.exports.create = function (req, res) {
     if (req.body.phone < 6000000000) {
       return res.redirect("back");
     }
-    //CREATE THE OWNER
-    Owner.findOne({ email: req.body.email }, function (err, user) {
-      if (err) {
-        console.log("Error in finding the user", err);
-      }
 
-      if (!user) {
+    if (!user) {
+      let owner = await Owner.findOne({ email: req.body.email });
+
+      if (!owner) {
         bcrypt.hash(req.body.password, 10, function (err, hash) {
           Owner.create(
             {
@@ -81,10 +82,14 @@ module.exports.create = function (req, res) {
           );
         });
       } else {
+        req.flahs("error", "User already exist");
         return res.redirect("/owner/signin");
       }
-    });
-  });
+    }
+  } catch (err) {
+    console.log("error in creating a user", err);
+    return res.redirect("back");
+  }
 };
 
 module.exports.createSession = function (req, res) {

@@ -24,10 +24,10 @@ module.exports.createSession = async function (req, res) {
           //if request is fetched then send the jwt token to the user
           return res.status(200).json({
             message: "Land Owner signed in successfully",
+            data: owner,
             token: jwt.sign(owner.toJSON(), "findmyhome", {
               expiresIn: "600000",
             }),
-            data: owner,
           });
         }
       });

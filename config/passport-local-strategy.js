@@ -68,7 +68,7 @@ passport.use(
   )
 );
 
-// //serialize a user means user is stored as cookie in browser
+// // //serialize a user means user is stored as cookie in browser
 passport.serializeUser(function (user, done) {
   done(null, user);
 });
@@ -92,7 +92,6 @@ passport.checkAuthentication = function (req, res, next) {
 passport.setAuthenticatedUser = function (req, res, next) {
   if (req.isAuthenticated()) {
     //req.user contains the signed in user information
-
     res.locals.user = req.user;
   }
   next();

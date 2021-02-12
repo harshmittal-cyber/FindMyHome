@@ -35,37 +35,28 @@ function validateEmail(email) {
 }
 
 // //IF TRUE
-// function validatePassword(password) {
-//   const re = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])([a-zA-Z0-9@$!%*?&]{8,})$/;
-//   return re.test(password);
-// }
+function validatePassword(password) {
+  const re = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])([a-zA-Z0-9@$!%*?&]{8,})$/;
+  return re.test(password);
+}
 
 //Create a user
-module.exports.create = function (req, res) {
+module.exports.create = async function (req, res) {
   //FIND IF WE USER ALREADY EXIST AS A OWNER OR NOT
-  const email = req.body.email;
+  try {
+    const email = req.body.email;
 
-  //checking if email is valid or not
-  if (!validateEmail(email)) {
-    req.flash("error", "Enter a valid email");
-    return res.redirect("back");
-  }
-
-  // if (!validatePassword(password)) {
-  //   req.flash("error", "Enter a valid password");
-  // }
-
-  Owner.findOne({ email: req.body.email }, function (err, user) {
-    if (err) {
-      req.flash("error", err);
-      console.log("Error in finding a user", err);
-      return res.status(500).send("error occured");
+    //checking if email is valid or not
+    if (!validateEmail(email)) {
+      req.flash("error", "Enter a valid email");
+      return res.redirect("back");
     }
-    if (user) {
+    let owner = await Owner.findOne({ email: req.body.email });
+
+    if (owner) {
       req.flash("error", "User already exist");
-      return res.status(500).send("Username already exist");
+      return res.redirect("back");
     }
-
     //CHECK IF PASSWORD MATCH WITH CONFIRM PASSWORD OR NOT
     if (req.body.password != req.body.confirm_password) {
       req.flash("Password not matched");
@@ -76,13 +67,9 @@ module.exports.create = function (req, res) {
       req.flash("error", "Enter valid mobile number");
       return res.redirect("back");
     }
-    //CREATE A USER
-    User.findOne({ email: req.body.email }, function (err, user) {
-      if (err) {
-        req.flash("error", err);
-        console.log("Error in finding a user", err);
-        return res.status(500).send("error occured");
-      }
+
+    if (!owner) {
+      let user = await User.findOne({ email: req.body.email });
 
       if (!user) {
         //encrypt the password
@@ -105,10 +92,13 @@ module.exports.create = function (req, res) {
           );
         });
       } else {
-        return res.redirect("back");
+        req.flash("error", "User already exist");
+        return res.redirect("/users/signin");
       }
-    });
-  });
+    }
+  } catch (err) {
+    console.log("Error in creating a user", err);
+  }
 };
 
 module.exports.createSession = function (req, res) {
