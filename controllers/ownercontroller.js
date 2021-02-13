@@ -82,7 +82,7 @@ module.exports.create = async function (req, res) {
           );
         });
       } else {
-        req.flahs("error", "User already exist");
+        req.flash("error", "User already exist");
         return res.redirect("/owner/signin");
       }
     }

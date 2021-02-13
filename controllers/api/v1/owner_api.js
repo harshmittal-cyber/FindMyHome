@@ -1,7 +1,7 @@
 const Owner = require("../../../models/owner");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-
+const User = require("../../../models/user");
 module.exports.createSession = async function (req, res) {
   try {
     let owner = await Owner.findOne({ email: req.body.email });
@@ -40,6 +40,66 @@ module.exports.createSession = async function (req, res) {
     console.log("error", err);
     return res.status(500).json({
       message: "Error in creating a session",
+    });
+  }
+};
+
+module.exports.create = async function (req, res) {
+  //FIND IF WE USER ALREADY EXIST AS A OWNER OR NOT
+  try {
+    let user = await User.findOne({ email: req.body.email });
+
+    if (user) {
+      return res.status(401).json({
+        message: "User already exist as a buyer",
+      });
+    }
+
+    //CHECK IF PASSWORD MATCH WITH CONFIRM PASSWORD OR NOT
+    if (req.body.password != req.body.confirm_password) {
+      return res.status(401).json({
+        message: "Confirm password not matched",
+      });
+    }
+    //CHECK IF MOBILE NO. IS OF 10 DIGITS OR NOT
+    if (req.body.phone < 6000000000) {
+      return res.status(401).json({
+        message: "Invalid Mobile Number",
+      });
+    }
+
+    if (!user) {
+      let owner = await Owner.findOne({ email: req.body.email });
+
+      if (!owner) {
+        bcrypt.hash(req.body.password, 10, function (err, hash) {
+          Owner.create(
+            {
+              email: req.body.email,
+              password: hash,
+              name: req.body.name,
+              phone: req.body.phone,
+              place: req.body.place,
+            },
+            function (err, user) {
+              if (err) {
+                return res.status(500).send(`Error in creating a user ${err}`);
+              }
+              return res.status(200).json({
+                message: "User created successfully",
+              });
+            }
+          );
+        });
+      } else {
+        return res.status(401).json({
+          message: "User already exist",
+        });
+      }
+    }
+  } catch (err) {
+    return res.status(500).json({
+      message: `Error in creating a user ${err}`,
     });
   }
 };

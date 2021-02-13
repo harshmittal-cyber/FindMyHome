@@ -1,4 +1,3 @@
-const { Int32 } = require("bson");
 const mongoose = require("mongoose");
 
 const ownerSchema = new mongoose.Schema(
