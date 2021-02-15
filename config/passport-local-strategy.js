@@ -70,8 +70,10 @@ passport.use(
 
 // // //serialize a user means user is stored as cookie in browser
 passport.serializeUser(function (user, done) {
+  console.log(user.id);
   done(null, user.id);
 });
+
 //deserialize a user means it check in database whether the cookie is matched with id or not
 passport.deserializeUser(function (id, done) {
   //now object is stored in req and can be acesses throught owner and users routes

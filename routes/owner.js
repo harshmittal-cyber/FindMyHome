@@ -4,7 +4,17 @@ const owner_controller = require("../controllers/ownercontroller");
 const passport = require("passport");
 const user_controller = require("../controllers/usercontroller");
 
-router.get("/profile", passport.checkAuthentication, owner_controller.profile);
+router.get(
+  "/profile",
+  function (req, res, next) {
+    if (req.isAuthenticated() && req.user.isAdmin) {
+      return next();
+    } else {
+      return res.redirect("back");
+    }
+  },
+  owner_controller.profile
+);
 
 router.get("/signin", owner_controller.signin);
 router.get("/signup", owner_controller.signup);

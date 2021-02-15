@@ -2,7 +2,17 @@ const express = require("express");
 const router = express.Router();
 const user_controller = require("../controllers/usercontroller");
 const passport = require("passport");
-router.get("/profile", passport.checkAuthentication, user_controller.profile);
+router.get(
+  "/profile",
+  function (req, res, next) {
+    if (req.isAuthenticated() && req.user.isAdmin) {
+      return res.redirect("/owner/profile");
+    } else {
+      return next();
+    }
+  },
+  user_controller.profile
+);
 
 router.get("/signin", user_controller.signin);
 router.get("/signup", user_controller.signup);
