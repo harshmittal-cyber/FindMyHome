@@ -13,7 +13,7 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const flash = require("connect-flash");
 const customMware = require("./config/middleware");
-
+const bodyParser = require("body-parser");
 app.use(express.urlencoded({ extended: true }));
 
 //for cookies

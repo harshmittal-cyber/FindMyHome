@@ -1,6 +1,7 @@
 const Owner = require("../models/owner");
 const User = require("../models/user");
 const bcrypt = require("bcrypt");
+const passport = require("passport");
 
 module.exports.profile = function (req, res) {
   return res.render("owner_profile", {
@@ -32,14 +33,26 @@ function validateEmail(email) {
   return re.test(String(email).toLowerCase());
 }
 
+// //IF TRUE
+function validatePassword(password) {
+  const re = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])([a-zA-Z0-9@$!%*?&]{8,})$/;
+  return re.test(password);
+}
+
 module.exports.create = async function (req, res) {
   //FIND IF WE USER ALREADY EXIST AS A OWNER OR NOT
   try {
     const email = req.body.email;
+    const password = req.body.password;
 
     //checking if email is valid or not
     if (!validateEmail(email)) {
       req.flash("error", "Enter a valid email");
+      return res.redirect("back");
+    }
+
+    if (!validatePassword(password)) {
+      req.flash("error", "Enter a Strong password");
       return res.redirect("back");
     }
 

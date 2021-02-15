@@ -45,12 +45,18 @@ module.exports.create = async function (req, res) {
   //FIND IF WE USER ALREADY EXIST AS A OWNER OR NOT
   try {
     const email = req.body.email;
-
+    const password = req.body.password;
     //checking if email is valid or not
     if (!validateEmail(email)) {
       req.flash("error", "Enter a valid email");
       return res.redirect("back");
     }
+
+    if (!validatePassword(password)) {
+      req.flash("error", "Enter a strong password");
+      return res.redirect("back");
+    }
+    //find the owner email if it register in database
     let owner = await Owner.findOne({ email: req.body.email });
 
     if (owner) {
@@ -69,6 +75,7 @@ module.exports.create = async function (req, res) {
     }
 
     if (!owner) {
+      //find the tenant email if it register in database
       let user = await User.findOne({ email: req.body.email });
 
       if (!user) {

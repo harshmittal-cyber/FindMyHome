@@ -44,14 +44,43 @@ module.exports.createSession = async function (req, res) {
   }
 };
 
+// REGX* FOR VALIDATING NEW ENTERED EMAIL
+function validateEmail(email) {
+  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
+}
+
+// //IF TRUE
+function validatePassword(password) {
+  const re = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])([a-zA-Z0-9@$!%*?&]{8,})$/;
+  return re.test(password);
+}
+
 module.exports.create = async function (req, res) {
   //FIND IF WE USER ALREADY EXIST AS A OWNER OR NOT
   try {
+    const email = req.body.email;
+    const password = req.body.password;
+
+    //checking if email is valid or not
+    if (!validateEmail(email)) {
+      return res.status(500).json({
+        message: "Enter a valid email",
+      });
+    }
+
+    if (!validatePassword(password)) {
+      return res.status(500).json({
+        message:
+          "Enter a strong password with different characters,alphabets and special symbols",
+      });
+    }
+
     let user = await User.findOne({ email: req.body.email });
 
     if (user) {
       return res.status(401).json({
-        message: "User already exist as a buyer",
+        message: "User already exist",
       });
     }
 
