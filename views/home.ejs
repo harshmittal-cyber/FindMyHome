@@ -1,13 +1,21 @@
-<h1>Home page</h1>
+<!-- if user is owner of property then show this part -->
 <%if(locals.user && locals.user.isAdmin){%>
 <h1>Hi landlord</h1>
-<a href="/owner/profile"><%=user.name%></a>
-<p><a href="/owner/destroysession">SignOut</a></p>
+<p>
+  <a href="/owner/profile/<%=user.id%>"><%=user.name%></a>
+</p>
+<p><a href="/owner/destroysession/<%=user.id%>">SignOut</a></p>
+<!-- if user is tenant then show this part -->
 <% } else if(locals.user && !locals.user.isAdmin){%>
 <h1>Hi tenant</h1>
-<a href="/users/profile"><%=user.name%></a>
-<p><a href="/users/destroysession">SignOut</a></p>
+<p>
+  <a href="/users/profile/<%=user.id%>"><%=user.name%></a>
+</p>
+<p><a href="/users/destroysession/<%=user.id%>">SignOut</a></p>
+<!-- if user is not logged in then show this part -->
 <% }else{%>
-<a href="/owner/signin">Are you a landlord</a><br />
-<a href="/users/signin">Are you a buyer</a>
+<p>
+  <a href="/owner/signin">Are you a landlord</a>
+</p>
+<p><a href="/users/signin">Are you a buyer</a></p>
 <%} %>

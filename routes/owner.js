@@ -5,7 +5,7 @@ const passport = require("passport");
 const user_controller = require("../controllers/usercontroller");
 
 router.get(
-  "/profile",
+  "/profile/:id",
   function (req, res, next) {
     if (req.isAuthenticated() && req.user.isAdmin) {
       return next();
@@ -27,7 +27,7 @@ router.post(
   }),
   owner_controller.createSession
 );
-
-router.get("/destroysession", user_controller.destroysession);
+router.post("/update/:id", owner_controller.update);
+router.get("/destroysession/:id", user_controller.destroysession);
 
 module.exports = router;

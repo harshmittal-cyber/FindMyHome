@@ -1,9 +1,14 @@
 <h1>Hi landlord</h1>
-<% if(locals.user) {%>
+<% if(locals.user && locals.user.isAdmin) {%>
+<form method="POST" action="/owner/update/<%=user.id%>">
+  <input type="email" name="email" value="<%=user.email%>" />
+  <input type="name" name="name" value="<%=user.name%>" />
+  <input type="submit" />
+</form>
 <p><%=user.name%></p>
 <p><%=user.email%></p>
 <p><%=user.phone%></p>
-<p><a href="/owner/destroysession">SignOut</a></p>
+<p><a href="/owner/destroysession/<%=user.id%>>">SignOut</a></p>
 <% }else{%>
 <p><a href="/owner/signin">SignIn</a></p>
 <p><a href="/owner/signup">Signup</a></p>

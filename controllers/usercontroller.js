@@ -111,11 +111,23 @@ module.exports.create = async function (req, res) {
 module.exports.createSession = function (req, res) {
   console.log(req.user.id);
   req.flash("success", "Logged in successfully");
-  return res.redirect("/users/profile");
+  return res.redirect("/");
 };
 
 module.exports.destroysession = function (req, res) {
   req.flash("success", "LogOut successfully");
   req.logout();
   return res.redirect("/");
+};
+
+module.exports.update = function (req, res) {
+  if (req.user.id == req.params.id) {
+    User.findByIdAndUpdate(req.params.id, req.body, function (err, user) {
+      return res.redirect("back");
+    });
+  } else {
+    return res.status(401).json({
+      message: "Unauthorized",
+    });
+  }
 };

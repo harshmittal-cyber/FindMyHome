@@ -106,5 +106,17 @@ module.exports.create = async function (req, res) {
 };
 
 module.exports.createSession = function (req, res) {
-  return res.redirect("/owner/profile");
+  return res.redirect("/");
+};
+
+module.exports.update = function (req, res) {
+  if (req.user.id == req.params.id) {
+    Owner.findByIdAndUpdate(req.params.id, req.body, function (err, user) {
+      return res.redirect("back");
+    });
+  } else {
+    return res.status(401).json({
+      message: "Unauthorized",
+    });
+  }
 };

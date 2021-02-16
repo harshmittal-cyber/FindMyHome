@@ -3,10 +3,10 @@ const router = express.Router();
 const user_controller = require("../controllers/usercontroller");
 const passport = require("passport");
 router.get(
-  "/profile",
+  "/profile/:id",
   function (req, res, next) {
     if (req.isAuthenticated() && req.user.isAdmin) {
-      return res.redirect("/owner/profile");
+      return res.redirect("/owner/profile/:id");
     } else {
       return next();
     }
@@ -25,7 +25,8 @@ router.post(
   }),
   user_controller.createSession
 );
+router.post("/update/:id", user_controller.update);
 
-router.get("/destroysession", user_controller.destroysession);
+router.get("/destroysession/:id", user_controller.destroysession);
 
 module.exports = router;
