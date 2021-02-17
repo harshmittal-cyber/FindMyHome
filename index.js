@@ -31,6 +31,7 @@ app.use(
 
 //for layouts
 app.use(express.static("./assets"));
+app.use("/images", express.static(__dirname + "/images"));
 app.use(expressLayouts);
 
 //extract the styles

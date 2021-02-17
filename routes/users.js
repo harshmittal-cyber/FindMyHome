@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const user_controller = require("../controllers/usercontroller");
 const passport = require("passport");
+
 router.get(
   "/profile/:id",
   function (req, res, next) {

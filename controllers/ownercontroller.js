@@ -1,7 +1,9 @@
 const Owner = require("../models/owner");
 const User = require("../models/user");
 const bcrypt = require("bcrypt");
-const passport = require("passport");
+const fs = require("fs");
+const path = require("path");
+const { user } = require("../config/mongoose");
 
 module.exports.profile = function (req, res) {
   return res.render("owner_profile", {
@@ -95,7 +97,7 @@ module.exports.create = async function (req, res) {
           );
         });
       } else {
-        req.flash("error", "User already exist");
+        req.flash("error", "User already exist with phone or email");
         return res.redirect("/owner/signin");
       }
     }
@@ -106,14 +108,34 @@ module.exports.create = async function (req, res) {
 };
 
 module.exports.createSession = function (req, res) {
+  console.log(req.user.isAdmin);
   return res.redirect("/");
 };
 
-module.exports.update = function (req, res) {
+module.exports.update = async function (req, res) {
   if (req.user.id == req.params.id) {
-    Owner.findByIdAndUpdate(req.params.id, req.body, function (err, user) {
-      return res.redirect("back");
-    });
+    try {
+      let owner = await Owner.findById(req.params.id);
+
+      Owner.uploadedimage(req, res, function (err) {
+        if (err) {
+          console.log("Error in updating a profile", err);
+        }
+        owner.name = req.body.name;
+        owner.email = req.body.email;
+
+        if (req.file) {
+          if (owner.avatar) {
+            fs.unlinkSync(path.join(__dirname, "..", owner.avatar));
+          }
+          owner.avatar = Owner.avatarPath + "/" + req.file.filename;
+        }
+        owner.save();
+        return res.redirect("back");
+      });
+    } catch (err) {
+      console.log("error", err);
+    }
   } else {
     return res.status(401).json({
       message: "Unauthorized",

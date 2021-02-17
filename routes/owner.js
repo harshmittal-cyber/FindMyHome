@@ -3,6 +3,7 @@ const router = express.Router();
 const owner_controller = require("../controllers/ownercontroller");
 const passport = require("passport");
 const user_controller = require("../controllers/usercontroller");
+const home_controller = require("../controllers/homecontroller");
 
 router.get(
   "/profile/:id",
