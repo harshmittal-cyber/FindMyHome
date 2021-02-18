@@ -5,6 +5,16 @@
   <a href="/owner/profile/<%=user.id%>"><%=user.name%></a>
 </p>
 <p><a href="/owner/destroysession/<%=user.id%>">SignOut</a></p>
+<form action="/property/create" method="POST">
+  <textarea
+    name="text"
+    placeholder="Enter your property details"
+    rows="4"
+    cols="25"
+  ></textarea
+  ><br />
+  <input type="number" name="price" placeholder="Enter price" />
+</form>
 <!-- if user is tenant then show this part -->
 <% } else if(locals.user && !locals.user.isAdmin){%>
 <h1>Hi tenant</h1>

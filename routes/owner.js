@@ -4,6 +4,7 @@ const owner_controller = require("../controllers/ownercontroller");
 const passport = require("passport");
 const user_controller = require("../controllers/usercontroller");
 const home_controller = require("../controllers/homecontroller");
+const property_controller = require("../controllers/property_controller");
 
 router.get(
   "/profile/:id",
@@ -21,6 +22,7 @@ router.get("/signin", owner_controller.signin);
 router.get("/signup", owner_controller.signup);
 
 router.post("/create", owner_controller.create);
+
 router.post(
   "/create-session",
   passport.authenticate("owner", {
