@@ -1,0 +1,10 @@
+<%if(locals.user && locals.user.isAdmin && locals.user.id==property.user.id){ %>
+<ul>
+  <li>
+    <p><%=property.text%></p>
+    <p><%=property.place%></p>
+    <p><%=property.price%></p>
+    <p><%=property.user.name%></p>
+  </li>
+</ul>
+<% } %>

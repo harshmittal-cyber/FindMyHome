@@ -5,6 +5,7 @@
   <a href="/owner/profile/<%=user.id%>"><%=user.name%></a>
 </p>
 <p><a href="/owner/destroysession/<%=user.id%>">SignOut</a></p>
+<!-- Property form -->
 <form action="/property/create" method="POST">
   <textarea
     name="text"
@@ -13,14 +14,18 @@
     cols="25"
   ></textarea
   ><br />
-  <input type="number" name="price" placeholder="Enter price" />
+  <input type="text" name="price" placeholder="Enter price" />
+  <input type="text" name="place" placeholder="Enter place" />
+  <input type="submit" value="Post" />
 </form>
+<%for(property of properties){%> <%-include('_property')%> <% } %>
 <!-- if user is tenant then show this part -->
 <% } else if(locals.user && !locals.user.isAdmin){%>
 <h1>Hi tenant</h1>
 <p>
   <a href="/users/profile/<%=user.id%>"><%=user.name%></a>
 </p>
+
 <p><a href="/users/destroysession/<%=user.id%>">SignOut</a></p>
 <!-- if user is not logged in then show this part -->
 <% }else{%>

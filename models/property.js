@@ -13,12 +13,12 @@ const propertySchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    postedBy: {
+    user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Owner",
     },
     price: {
-      type: Number,
+      type: String,
       required: true,
     },
   },
