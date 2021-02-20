@@ -4,7 +4,8 @@
     <p><%=property.text%></p>
     <p><%=property.place%></p>
     <p><%=property.price%></p>
-    <p><%=property.user.name%></p>
+    <a href="/owner/profile/<%=user.id%>"><p><%=property.user.name%></p></a>
+    <a href="/property/destroy/<%=property.id%>">Delete</a>
   </li>
 </ul>
 <% } %>

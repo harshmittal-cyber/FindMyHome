@@ -1,4 +1,7 @@
 const mongoose = require("mongoose");
+const path = require("path");
+const multer = require("multer");
+const IMG_PATH = path.join("/images/property/avatar");
 
 const propertySchema = new mongoose.Schema(
   {
@@ -26,6 +29,20 @@ const propertySchema = new mongoose.Schema(
     timestamps: true,
   }
 );
+
+let storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, path.join(__dirname, "..", IMG_PATH));
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + "-" + Date.now());
+  },
+});
+
+propertySchema.statics.uploadedimage = multer({ storage: storage }).single(
+  "avatar"
+);
+propertySchema.statics.avatarPath = IMG_PATH;
 
 const Land = mongoose.model("Land", propertySchema);
 

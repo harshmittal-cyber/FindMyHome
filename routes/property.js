@@ -15,3 +15,15 @@ router.post(
 );
 
 module.exports = router;
+
+router.get(
+  "/destroy/:id",
+  function (req, res, next) {
+    if (req.isAuthenticated() && req.user.isAdmin) {
+      return next();
+    } else {
+      return res.redirect("back");
+    }
+  },
+  property_controller.destroy
+);
