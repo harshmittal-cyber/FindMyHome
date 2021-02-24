@@ -1,11 +1,21 @@
-<%if(locals.user && locals.user.isAdmin && locals.user.id==property.user.id){ %>
 <ul>
   <li>
-    <p><%=property.text%></p>
-    <p><%=property.place%></p>
-    <p><%=property.price%></p>
-    <a href="/owner/profile/<%=user.id%>"><p><%=property.user.name%></p></a>
-    <a href="/property/destroy/<%=property.id%>">Delete</a>
+    <p>Owner:<b><%=property.user.name%></b></p>
+
+    <p>Property Details:<b> <%=property.text%></b></p>
+    <p>Property Place:<b> <%=property.place%></b></p>
+    <p>Property Price:<b> <%=property.price%></b></p>
+
+    <%if(locals.user && locals.user.isAdmin &&
+    locals.user.id==property.user.id){ %>
+    <a href="/owner/profile/<%=user.id%>" style="text-decoration: none"
+      ><%=property.user.name%></a
+    ><br /><br />
+
+    <a href="/property/destroy/<%=property.id%>" style="text-decoration: none"
+      >Delete</a
+    >
+
+    <% } %>
   </li>
 </ul>
-<% } %>
