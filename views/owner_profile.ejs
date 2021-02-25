@@ -1,5 +1,6 @@
 <h1>Hi landlord</h1>
 <% if(locals.user && locals.user.isAdmin) {%>
+
 <img
   src="<%=user.avatar%>"
   alt="<%=user.name%>"
@@ -20,7 +21,9 @@
 <p><%=user.phone%></p>
 <p><a href="/owner/destroysession/<%=user.id%>>">SignOut</a></p>
 <p><a href="/">Home</a></p>
-<% }else{%>
+<p><h1>Your Properties</h1></p>
+<%for(property of properties){%> <%-include('_profileproperty')%> <%}%> <% }else
+{%>
 <p><a href="/owner/signin">SignIn</a></p>
 <p><a href="/owner/signup">Signup</a></p>
 <% } %>

@@ -1,0 +1,18 @@
+<ul>
+  <%if(locals.user.id==property.user.id){%>
+  <li style="background-color: aliceblue">
+    <p>Owner:<b><%=property.user.name%></b></p>
+
+    <p>Property Details:<b> <%=property.text%></b></p>
+    <p>Property Place:<b> <%=property.place%></b></p>
+    <p>Property Price:<b> <%=property.price%></b></p>
+    <a href="/owner/profile/<%=user.id%>" style="text-decoration: none"
+      ><%=property.user.name%></a
+    ><br /><br />
+
+    <a href="/property/destroy/<%=property.id%>" style="text-decoration: none"
+      >Delete</a
+    >
+  </li>
+  <%}%>
+</ul>

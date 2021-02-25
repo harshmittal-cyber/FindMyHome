@@ -1,6 +1,7 @@
 <!-- if user is owner of property then show this part -->
 <%if(locals.user && locals.user.isAdmin){%>
 <h1>Hi landlord</h1>
+
 <p>
   <a href="/owner/profile/<%=user.id%>"><%=user.name%></a>
 </p>
@@ -18,6 +19,7 @@
   <input type="text" name="place" placeholder="Enter place" />
   <input type="submit" value="Post" />
 </form>
+
 <!-- if user is tenant then show this part -->
 <% } else if(locals.user && !locals.user.isAdmin){%>
 <h1>Hi tenant</h1>
@@ -33,4 +35,6 @@
 </p>
 <p><a href="/users/signin">Are you a buyer</a></p>
 
-<%} %> <%for(property of properties){%> <%-include('_property')%> <% } %>
+<%} %> <%for(property of properties){%>
+<p><%-include('_property')%></p>
+<% } %>

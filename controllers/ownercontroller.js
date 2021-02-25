@@ -4,11 +4,16 @@ const bcrypt = require("bcrypt");
 const fs = require("fs");
 const path = require("path");
 const { user } = require("../config/mongoose");
-
+const Property = require("../models/property");
 module.exports.profile = function (req, res) {
-  return res.render("owner_profile", {
-    title: "FindMyHome || Profile",
-  });
+  Property.find({})
+    .populate("user", "name")
+    .exec(function (err, properties) {
+      return res.render("owner_profile", {
+        title: "FindMyHome || Profile",
+        properties: properties,
+      });
+    });
 };
 
 module.exports.signin = function (req, res) {

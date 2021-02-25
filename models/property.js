@@ -24,6 +24,12 @@ const propertySchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    bid: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Bid",
+      },
+    ],
   },
   {
     timestamps: true,
