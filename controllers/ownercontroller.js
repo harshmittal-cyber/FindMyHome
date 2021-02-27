@@ -3,8 +3,8 @@ const User = require("../models/user");
 const bcrypt = require("bcrypt");
 const fs = require("fs");
 const path = require("path");
-const { user } = require("../config/mongoose");
 const Property = require("../models/property");
+
 module.exports.profile = function (req, res) {
   Property.find({})
     .populate("user", "name")

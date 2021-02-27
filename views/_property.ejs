@@ -1,21 +1,32 @@
 <ul>
   <li style="background-color: aliceblue">
-    <p>Owner:<b><%=property.user.name%></b></p>
+    <%if(locals.user && locals.user.isAdmin &&
+    locals.user.id==property.user.id){ %>
+    <p>
+      Owner:<b
+        ><a href="/owner/profile/<%=user.id%>"><%=property.user.name%></a></b
+      >
+    </p>
 
     <p>Property Details:<b> <%=property.text%></b></p>
     <p>Property Place:<b> <%=property.place%></b></p>
     <p>Property Price:<b> <%=property.price%></b></p>
 
-    <%if(locals.user && locals.user.isAdmin &&
-    locals.user.id==property.user.id){ %>
-    <a href="/owner/profile/<%=user.id%>" style="text-decoration: none"
-      ><%=property.user.name%></a
-    ><br /><br />
-
     <a href="/property/destroy/<%=property.id%>" style="text-decoration: none"
       >Delete</a
     >
+    <br />
+    <form method="POST" action="/bid/create">
+      <input type="text" name="text" placeholder="Type Comment..." />
+      <input type="submit" />
+    </form>
 
-    <% } %>
+    <% } else{%>
+    <p>Owner:<b><%=property.user.name%></b></p>
+
+    <p>Property Details:<b> <%=property.text%></b></p>
+    <p>Property Place:<b> <%=property.place%></b></p>
+    <p>Property Price:<b> <%=property.price%></b></p>
+    <%}%>
   </li>
 </ul>

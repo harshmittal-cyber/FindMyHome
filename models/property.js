@@ -24,7 +24,7 @@ const propertySchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    bid: [
+    bids: [
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Bid",

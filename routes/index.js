@@ -7,5 +7,6 @@ router.use("/api", require("./api"));
 router.use("/users/", require("./users"));
 router.use("/owner/", require("./owner"));
 router.use("/property", require("./property"));
+router.use("/bid", require("./Bid"));
 
 module.exports = router;
