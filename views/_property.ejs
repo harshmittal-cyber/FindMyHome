@@ -3,6 +3,12 @@
     <%if(locals.user && locals.user.isAdmin &&
     locals.user.id==property.user.id){ %>
     <p>
+      <img
+        src="<%=user.avatar%>"
+        style="height: 50px; width: 50px; border-radius: 50px"
+      />
+    </p>
+    <p>
       Owner:<b
         ><a href="/owner/profile/<%=user.id%>"><%=property.user.name%></a></b
       >
@@ -16,12 +22,31 @@
       >Delete</a
     >
     <br />
+
+    <% }else if(locals.user && !locals.user.isAdmin){%>
+    <p>
+      <img
+        src="<%=property.user.avatar%>"
+        style="height: 50px; width: 50px; border-radius: 50px"
+      />
+    </p>
+    <p>Owner:<b><%=property.user.name%></b></p>
+
+    <p>Property Details:<b> <%=property.text%></b></p>
+    <p>Property Place:<b> <%=property.place%></b></p>
+    <p>Property Price:<b> <%=property.price%></b></p>
     <form method="POST" action="/bid/create">
-      <input type="text" name="text" placeholder="Type Comment..." />
+      <input type="text" name="text" placeholder="Place your Bid..." />
+      <input type="hidden" value="<%=property._id%>" />
       <input type="submit" />
     </form>
-
-    <% } else{%>
+    <%}else{%>
+    <p>
+      <img
+        src="<%=property.user.avatar%>"
+        style="height: 50px; width: 50px; border-radius: 50px"
+      />
+    </p>
     <p>Owner:<b><%=property.user.name%></b></p>
 
     <p>Property Details:<b> <%=property.text%></b></p>
