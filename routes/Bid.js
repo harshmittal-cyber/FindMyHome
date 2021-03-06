@@ -1,8 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const property_controller = require("../controllers/property_controller");
-const comment_controller = require("../controllers/Bidcontroller");
-const { localsName } = require("ejs");
+const bid_controller = require("../controllers/Bidcontroller");
 
 router.post(
   "/create",
@@ -13,7 +12,7 @@ router.post(
       return next();
     }
   },
-  comment_controller.createBid
+  bid_controller.createBid
 );
 
 module.exports = router;

@@ -45,9 +45,10 @@ let storage = multer.diskStorage({
   },
 });
 
-propertySchema.statics.uploadedimage = multer({ storage: storage }).single(
+propertySchema.statics.uploadedimages = multer({ storage: storage }).single(
   "avatar"
 );
+
 propertySchema.statics.avatarPath = IMG_PATH;
 
 const Land = mongoose.model("Land", propertySchema);

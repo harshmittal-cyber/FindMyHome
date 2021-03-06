@@ -17,6 +17,7 @@
   ><br />
   <input type="text" name="price" placeholder="Enter price" />
   <input type="text" name="place" placeholder="Enter place" />
+  <!-- <input type="file" name="avatar" /> -->
   <input type="submit" value="Post" />
 </form>
 
@@ -36,5 +37,5 @@
 <p><a href="/users/signin">Are you a buyer</a></p>
 
 <%} %> <%for(property of properties){%>
-<p><%-include('_property')%></p>
-<% } %>
+<p><%-include('_property');%></p>
+<%}%>

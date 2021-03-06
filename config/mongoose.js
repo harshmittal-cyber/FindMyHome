@@ -4,7 +4,7 @@ mongoose.set("useFindAndModify", false);
 mongoose.set("useCreateIndex", true);
 mongoose.set("useUnifiedTopology", true);
 
-mongoose.connect("mongodb://localhost/findmyhome");
+mongoose.connect("mongodb://localhost/findmyhomes");
 
 const db = mongoose.connection;
 

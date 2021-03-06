@@ -15,7 +15,8 @@ const flash = require("connect-flash");
 const customMware = require("./config/middleware");
 const bodyParser = require("body-parser");
 app.use(express.urlencoded({ extended: true }));
-
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 //for cookies
 app.use(cookieParser());
 

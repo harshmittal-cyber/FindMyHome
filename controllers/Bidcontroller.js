@@ -4,7 +4,7 @@ const Property = require("../models/property");
 module.exports.createBid = function (req, res) {
   Property.findById(req.body.property, function (err, property) {
     if (err) {
-      console.log("error in creating a comment", err);
+      console.log("error in creating a Bid", err);
       return res.redirect("back");
     }
     if (property) {
@@ -21,7 +21,7 @@ module.exports.createBid = function (req, res) {
           property.bids.push(bid);
 
           property.save();
-          req.flash("success", "Comment created successfully");
+          req.flash("success", "Your Bid Published successfully");
 
           return res.redirect("back");
         }

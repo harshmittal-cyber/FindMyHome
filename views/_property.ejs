@@ -4,7 +4,7 @@
     locals.user.id==property.user.id){ %>
     <p>
       <img
-        src="<%=user.avatar%>"
+        src="<%=property.user.avatar%>"
         style="height: 50px; width: 50px; border-radius: 50px"
       />
     </p>
@@ -13,7 +13,12 @@
         ><a href="/owner/profile/<%=user.id%>"><%=property.user.name%></a></b
       >
     </p>
-
+    <!-- <img
+      src="<%=property.avatar%>"
+      style="width: 45px; height: 45px"
+      alt="<%=property.user.name%>"
+      
+    /> -->
     <p>Property Details:<b> <%=property.text%></b></p>
     <p>Property Place:<b> <%=property.place%></b></p>
     <p>Property Price:<b> <%=property.price%></b></p>
@@ -37,7 +42,7 @@
     <p>Property Price:<b> <%=property.price%></b></p>
     <form method="POST" action="/bid/create">
       <input type="text" name="text" placeholder="Place your Bid..." />
-      <input type="hidden" value="<%=property._id%>" />
+      <input type="hidden" name="property" value="<%=property._id%>" />
       <input type="submit" />
     </form>
     <%}else{%>
@@ -52,6 +57,9 @@
     <p>Property Details:<b> <%=property.text%></b></p>
     <p>Property Place:<b> <%=property.place%></b></p>
     <p>Property Price:<b> <%=property.price%></b></p>
+    <%for(bid of property.bids){%>
+    <p><%-include('_bid');%></p>
     <%}%>
   </li>
 </ul>
+<%}%>
