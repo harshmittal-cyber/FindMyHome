@@ -24,6 +24,9 @@
     <a href="/property/destroy/<%=property.id%>" style="text-decoration: none"
       >Delete</a
     >
+    <%for(bid of property.bids){%>
+    <p><%-include('_bid');%></p>
+    <%}%>
   </li>
   <%}%>
 </ul>

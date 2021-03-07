@@ -1,7 +1,7 @@
 <ul>
+  <%if(locals.user && locals.user.isAdmin && locals.user.id==property.user.id){
+  %>
   <li style="background-color: aliceblue">
-    <%if(locals.user && locals.user.isAdmin &&
-    locals.user.id==property.user.id){ %>
     <p>
       <img
         src="<%=property.user.avatar%>"
@@ -13,12 +13,7 @@
         ><a href="/owner/profile/<%=user.id%>"><%=property.user.name%></a></b
       >
     </p>
-    <!-- <img
-      src="<%=property.avatar%>"
-      style="width: 45px; height: 45px"
-      alt="<%=property.user.name%>"
-      
-    /> -->
+
     <p>Property Details:<b> <%=property.text%></b></p>
     <p>Property Place:<b> <%=property.place%></b></p>
     <p>Property Price:<b> <%=property.price%></b></p>
@@ -27,8 +22,12 @@
       >Delete</a
     >
     <br />
-
-    <% }else if(locals.user && !locals.user.isAdmin){%>
+    <%for(bid of property.bids){%>
+    <p><%-include('_bid');%></p>
+    <%}%>
+  </li>
+  <% }else if(locals.user && !locals.user.isAdmin){%>
+  <li style="background-color: aliceblue">
     <p>
       <img
         src="<%=property.user.avatar%>"
@@ -45,7 +44,12 @@
       <input type="hidden" name="property" value="<%=property._id%>" />
       <input type="submit" />
     </form>
-    <%}else{%>
+    <%for(bid of property.bids){%>
+    <p><%-include('_bid');%></p>
+    <%}%>
+  </li>
+  <%}else{%>
+  <li style="background-color: aliceblue">
     <p>
       <img
         src="<%=property.user.avatar%>"
@@ -59,7 +63,9 @@
     <p>Property Price:<b> <%=property.price%></b></p>
     <%for(bid of property.bids){%>
     <p><%-include('_bid');%></p>
+
     <%}%>
   </li>
+
+  <%}%>
 </ul>
-<%}%>

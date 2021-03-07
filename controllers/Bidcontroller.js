@@ -12,12 +12,14 @@ module.exports.createBid = function (req, res) {
         {
           text: req.body.text,
           property: req.body.property,
-          user: req.body._id,
+          user: req.user._id,
         },
         function (err, bid) {
           if (err) {
             console.log("Error in creating a Bid", err);
           }
+          console.log("user", bid.user._id);
+          console.log("bid id", bid._id);
           property.bids.push(bid);
 
           property.save();
@@ -29,3 +31,5 @@ module.exports.createBid = function (req, res) {
     }
   });
 };
+
+module.exports.destroyBid = function (req, res) {};

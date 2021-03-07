@@ -2,6 +2,7 @@ const Property = require("../models/property");
 
 module.exports.home = function (req, res) {
   Property.find({})
+    .sort("-createdAt")
     .populate("user")
     .populate({
       path: "bids",
