@@ -20,13 +20,9 @@
     <p>Property Details:<b> <%=property.text%></b></p>
     <p>Property Place:<b> <%=property.place%></b></p>
     <p>Property Price:<b> <%=property.price%></b></p>
-
     <a href="/property/destroy/<%=property.id%>" style="text-decoration: none"
       >Delete</a
     >
-    <%for(bid of property.bids){%>
-    <p><%-include('_bid');%></p>
-    <%}%>
   </li>
   <%}%>
 </ul>

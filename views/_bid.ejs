@@ -5,9 +5,12 @@
         src="<%=bid.user.avatar%>"
         style="height: 35px; width: 35px; border-radius: 50%"
       />
-      <p><b><%=bid.text%></b></p>
-      <small><%=bid.user.name%></small>
+      <p><%=bid.text%></p>
+      <p><%=bid.user.name%></p>
+      <%if(locals.user && !locals.user.isAdmin && locals.userid==bid.user.id){%>
       <a href="/bid/destroy/<%=bid.id%>">Delete </a>
+
+      <%}%>
     </li>
   </ul>
 </div>

@@ -1,5 +1,5 @@
 const Property = require("../models/property");
-const fs = require("fs");
+const Bid = require("../models/bid");
 
 module.exports.createproperty = function (req, res) {
   Property.create(
@@ -24,7 +24,6 @@ module.exports.createproperty = function (req, res) {
         console.log("Érror in creating a property ", err);
         return res.redirect("back");
       }
-      console.log("propertyid:", property.id);
       req.flash("success", "Property Listed Successfully");
       return res.redirect("back");
     }
@@ -32,13 +31,17 @@ module.exports.createproperty = function (req, res) {
 };
 
 module.exports.destroy = function (req, res) {
-  //TODO later
-  Property.findByIdAndRemove({ _id: req.params.id }, function (err, property) {
-    if (err) {
-      console.log("Error in deleting a property", err);
+  Property.findById(req.params.id, function (err, property) {
+    if (property.user == req.user.id) {
+      property.remove();
+
+      Bid.deleteMany({ property: req.params.id }, function (err) {
+        req.flash("success", "Property Deleted successfully");
+        return res.redirect("back");
+      });
+    } else {
+      req.flash("error", "Invalid User");
       return res.redirect("back");
     }
-    req.flash("success", "Property Deleted Successfully");
-    return res.redirect("back");
   });
 };
