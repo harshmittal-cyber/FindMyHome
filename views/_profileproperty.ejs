@@ -1,5 +1,6 @@
 <ul>
-  <%if(locals.user.id==property.user.id){%>
+  <%if(locals.user && locals.user.isAdmin &&
+  locals.user.id==property.user.id){%>
   <li style="background-color: aliceblue">
     <p>
       <img
@@ -12,17 +13,14 @@
         ><a href="/owner/profile/<%=user.id%>"><%=property.user.name%></a></b
       >
     </p>
-    <!-- <img
-      src="<%=property.avatar%>"
-      style="width: 45px; height: 45px"
-      alt="<%=property.user.name%>"
-    /> -->
+
     <p>Property Details:<b> <%=property.text%></b></p>
     <p>Property Place:<b> <%=property.place%></b></p>
     <p>Property Price:<b> <%=property.price%></b></p>
     <a href="/property/destroy/<%=property.id%>" style="text-decoration: none"
       >Delete</a
     >
+    <%for(bid of property.bids){%> <%-include('_bid');%> <%}%>
   </li>
   <%}%>
 </ul>

@@ -1,15 +1,22 @@
 <div style="margin-left: 10px">
   <ul>
     <li>
+      <%if(locals.user && !locals.user.isAdmin &&
+      locals.user.id==bid.user.id){%>
       <img
         src="<%=bid.user.avatar%>"
-        style="height: 35px; width: 35px; border-radius: 50%"
+        style="width: 45px; height: 45px; border-radius: 50px"
+      />
+      <p><%=bid.text%></p>
+      <a href="/bid/destroy/<%=bid.id%>">Delete </a>
+
+      <%}else{%>
+      <img
+        src="<%=bid.user.avatar%>"
+        style="width: 45px; height: 45px; border-radius: 50px"
       />
       <p><%=bid.text%></p>
       <p><%=bid.user.name%></p>
-      <%if(locals.user && !locals.user.isAdmin && locals.userid==bid.user.id){%>
-      <a href="/bid/destroy/<%=bid.id%>">Delete </a>
-
       <%}%>
     </li>
   </ul>

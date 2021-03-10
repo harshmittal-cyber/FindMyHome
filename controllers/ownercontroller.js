@@ -7,7 +7,13 @@ const Property = require("../models/property");
 
 module.exports.profile = function (req, res) {
   Property.find({})
-    .populate("user", "name")
+    .populate("user")
+    .populate({
+      path: "bids",
+      populate: {
+        path: "user",
+      },
+    })
     .exec(function (err, properties) {
       return res.render("owner_profile", {
         title: "FindMyHome || Profile",
@@ -113,7 +119,6 @@ module.exports.create = async function (req, res) {
 };
 
 module.exports.createSession = function (req, res) {
-  console.log(req.user.isAdmin);
   req.flash("success", "Logged in Successfully");
   return res.redirect("/");
 };

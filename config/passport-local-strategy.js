@@ -3,6 +3,8 @@ const LocalStrategy = require("passport-local").Strategy;
 const User = require("../models/user");
 const Owner = require("../models/owner");
 const bcrypt = require("bcrypt");
+const passportOneSessionPerUser = require("passport-one-session-per-user");
+
 //local strategy for tenants
 passport.use(
   "user",
@@ -68,6 +70,7 @@ passport.use(
   )
 );
 
+passport.use(new passportOneSessionPerUser());
 // // //serialize a user means user is stored as cookie in browser
 passport.serializeUser(function (user, done) {
   console.log(user.id);

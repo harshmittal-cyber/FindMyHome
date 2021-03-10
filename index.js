@@ -14,6 +14,7 @@ const MongoStore = require("connect-mongo")(session);
 const flash = require("connect-flash");
 const customMware = require("./config/middleware");
 const bodyParser = require("body-parser");
+
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -68,6 +69,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(passport.setAuthenticatedUser);
+app.use(passport.authenticate("passport-one-session-per-user"));
 //for connect-flash msgs
 app.use(flash());
 app.use(customMware.setFlash);
