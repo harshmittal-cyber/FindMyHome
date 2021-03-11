@@ -16,11 +16,17 @@
   <input type="submit" />
 </form>
 <p><%=user.name%></p>
-<%=user.email%> &nbsp;<%=user.phone%>
+<p><%=user.email%></p> 
+<p><%=user.phone%></p>
 <p><a href="/owner/destroysession/<%=user.id%>>">SignOut</a></p>
 <p><a href="/">Home</a></p>
 <p><h1>My Properties</h1></p>
-<%for(property of properties){%> <%-include('_profileproperty')%> <%}%> <% }else
+<section>
+<%for(property of properties){%>
+  <p> <%-include('_profileproperty')%></p> 
+  <%}%> 
+</section>
+<% }else
 {%>
 <p><a href="/owner/signin">SignIn</a></p>
 <p><a href="/owner/signup">Signup</a></p>

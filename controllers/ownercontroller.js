@@ -5,21 +5,29 @@ const fs = require("fs");
 const path = require("path");
 const Property = require("../models/property");
 
-module.exports.profile = function (req, res) {
-  Property.find({})
-    .populate("user")
-    .populate({
-      path: "bids",
-      populate: {
-        path: "user",
-      },
-    })
-    .exec(function (err, properties) {
-      return res.render("owner_profile", {
-        title: "FindMyHome || Profile",
-        properties: properties,
+module.exports.profile = async function (req, res) {
+  try {
+    let properties = await Property.find({})
+      .sort("-createdAt")
+      .populate("user")
+      .populate({
+        path: "bids",
+        populate: {
+          path: "user",
+        },
       });
+
+    let user = Owner.findById(req.params.id);
+
+    return res.render("owner_profile", {
+      title: "FindMyHome || OwnerProfile",
+      properties: properties,
+      owner_user: user,
     });
+  } catch (err) {
+    console.log("Error", err);
+    return res.redirect("back");
+  }
 };
 
 module.exports.signin = function (req, res) {

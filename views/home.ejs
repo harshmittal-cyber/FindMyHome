@@ -1,41 +1,56 @@
 <!-- if user is owner of property then show this part -->
 <%if(locals.user && locals.user.isAdmin){%>
-<h1>Hi landlord</h1>
+<section style="width: 70%">
+  <h1>Hi landlord</h1>
 
-<p>
-  <a href="/owner/profile/<%=user.id%>"><%=user.name%></a>
-</p>
-<p><a href="/owner/destroysession/<%=user.id%>">SignOut</a></p>
-<!-- Property form -->
-<form action="/property/create" method="POST">
-  <textarea
-    name="text"
-    placeholder="Enter your property details"
-    rows="4"
-    cols="25"
-  ></textarea
-  ><br />
-  <input type="text" name="price" placeholder="Enter price" />
-  <input type="text" name="place" placeholder="Enter place" />
-  <!-- <input type="file" name="avatar" /> -->
-  <input type="submit" value="Post" />
-</form>
-
+  <p>
+    <a href="/owner/profile/<%=user.id%>"><%=user.name%></a>
+  </p>
+  <p><a href="/owner/destroysession/<%=user.id%>">SignOut</a></p>
+  <!-- Property form -->
+  <form action="/property/create" method="POST">
+    <textarea
+      name="text"
+      placeholder="Enter your property details"
+      rows="4"
+      cols="25"
+    ></textarea
+    ><br />
+    <input type="text" name="price" placeholder="Enter price" />
+    <input type="text" name="place" placeholder="Enter place" />
+    <!-- <input type="file" name="avatar" /> -->
+    <input type="submit" value="Post" />
+  </form>
+ 
+</section>
 <!-- if user is tenant then show this part -->
 <% } else if(locals.user && !locals.user.isAdmin){%>
-<h1>Hi tenant</h1>
-<p>
-  <a href="/users/profile/<%=user.id%>"><%=user.name%></a>
-</p>
+<section style="width: 70%">
+  <h1>Hi tenant</h1>
+  <p>
+    <a href="/users/profile/<%=user.id%>"><%=user.name%></a>
+  </p>
 
-<p><a href="/users/destroysession/<%=user.id%>">SignOut</a></p>
-<!-- if user is not logged in then show this part -->
-<% }else{%>
-<p>
-  <a href="/owner/signin">Are you a landlord</a>
-</p>
-<p><a href="/users/signin">Are you a buyer</a></p>
+  <p><a href="/users/destroysession/<%=user.id%>">SignOut</a></p>
+  <!-- if user is not logged in then show this part -->
 
-<%} %> <%for(property of properties){%>
-<p><%-include('_property');%></p>
-<%}%>
+  <% }else{%>
+  <p>
+    <a href="/owner/signin">Are you a landlord</a>
+  </p>
+  <p><a href="/users/signin">Are you a buyer</a></p>
+</section>
+
+<%} %>
+<section style="width: 30%; position: absolute; left: 72%; top: 10%">
+  <p style="font-size: 25px"><b>Property Dealers</b></p>
+  <p><%for(dealer of owner){%>
+    <p><a href="/owner/profile/<%=dealer.id%>"><%=dealer.name%></a></p>
+    <%}%>
+  </p>
+</section>
+<section style="width: 70%">
+  <%for(property of properties){%>
+  <p><%-include('_property');%></p>
+  <%}%>
+</section>

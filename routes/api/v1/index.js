@@ -3,4 +3,6 @@ const router = express.Router();
 
 router.use("/users", require("./users"));
 router.use("/owner", require("./owner"));
+router.use("/property", require("./property"));
+
 module.exports = router;

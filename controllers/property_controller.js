@@ -8,16 +8,6 @@ module.exports.createproperty = function (req, res) {
       place: req.body.place,
       price: req.body.price,
       user: req.user._id,
-      // avatar: Property.uploadedimages(req, res, function (err) {
-      //   if (err) {
-      //     console.log("Multer error", err);
-      //   }
-      //   console.log(req.file);
-      //   const file = req.file;
-      //   if (file) {
-      //     req.body.avatar = Property.avatarPath + "/" + req.file.filename;
-      //   }
-      // }),
     },
     function (err, property) {
       if (err) {
@@ -30,18 +20,23 @@ module.exports.createproperty = function (req, res) {
   );
 };
 
-module.exports.destroy = function (req, res) {
-  Property.findById(req.params.id, function (err, property) {
+module.exports.destroy = async function (req, res) {
+  try {
+    let property = await Property.findById(req.params.id);
+
     if (property.user == req.user.id) {
       property.remove();
 
-      Bid.deleteMany({ property: req.params.id }, function (err) {
-        req.flash("success", "Property Deleted successfully");
-        return res.redirect("back");
-      });
+      let bid = await Bid.deleteMany({ property: req.params.id });
+
+      req.flash("success", "Property Deleted Successfully");
+      return res.redirect("back");
     } else {
-      req.flash("error", "Invalid User");
+      req.flash("error", "You cannot Delete this Property");
       return res.redirect("back");
     }
-  });
+  } catch (err) {
+    req.flash("error", "Internal Server error");
+    return res.redirect("back");
+  }
 };
