@@ -1,7 +1,7 @@
 <ul>
   <%if(locals.user && locals.user.isAdmin && locals.user.id==property.user.id){
   %>
-  <li style="background-color: aliceblue">
+  <li style="background-color: aliceblue" id="<%=property.id%>">
     <p>
       <img
         src="<%=property.user.avatar%>"

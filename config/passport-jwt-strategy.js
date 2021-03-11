@@ -6,7 +6,7 @@ const Owner = require("../models/owner");
 
 let opts = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-  secretOrkey: "findmyhome",
+  secretOrKey: "findMyHome",
 };
 
 passport.use(

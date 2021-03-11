@@ -41,19 +41,17 @@ module.exports.destroyBid = async function (req, res) {
   try {
     let bid = await Bid.findById(req.params.id);
 
-    if (bid.user == req.user.id) {
-      bid.remove();
+    bid.remove();
 
-      let propertyId = await bid.property;
+    let propertyId = await bid.property;
 
-      let property = await Property.findByIdAndUpdate(propertyId, {
-        $pull: { bids: req.params.id },
-      });
+    let property = await Property.findByIdAndUpdate(propertyId, {
+      $pull: { bids: req.params.id },
+    });
 
-      return res.status(200).json({
-        message: "Bid deleted successfully",
-      });
-    }
+    return res.status(200).json({
+      message: "Bid deleted successfully",
+    });
   } catch (err) {
     return res.status(500).json({
       message: "Internal Server Error",

@@ -15,7 +15,7 @@ module.exports.index = async function (req, res) {
       });
 
     return res.status(200).json({
-      data: property,
+      property: property,
     });
   } catch (err) {
     return res.status(401).json({
@@ -42,8 +42,8 @@ module.exports.createproperty = async function (req, res) {
       message: "Property Created",
     });
   } catch (err) {
-    return res.status(401).json({
-      message: "Error in creating a property",
+    return res.status(500).json({
+      message: "Internal server error",
     });
   }
 };
@@ -52,21 +52,16 @@ module.exports.destroy = async function (req, res) {
   try {
     let property = await Property.findById(req.params.id);
 
-    if (property.user == req.user.id) {
-      property.remove();
+    property.remove();
 
-      let bid = await Bid.deleteMany({ property: req.params.id });
+    let bid = await Bid.deleteMany({ property: req.params.id });
 
-      return res.status(200).json({
-        message: "Property Deleted Successfully",
-      });
-    } else {
-      return res.status(401).json({
-        message: "User Not matched. You cannot delete this property",
-      });
-    }
+    return res.status(200).json({
+      message: "Property Deleted Successfully",
+    });
   } catch (err) {
     return res.status(500).json({
+      error: err,
       message: "Internal server Error",
     });
   }

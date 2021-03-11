@@ -6,6 +6,7 @@ const expressLayouts = require("express-ejs-layouts");
 const db = require("./config/mongoose");
 const passport = require("passport");
 const passportLocal = require("./config/passport-local-strategy");
+const passportJWT = require("./config/passport-jwt-strategy");
 const connect = require("connect");
 const bcrypt = require("bcrypt");
 const sassMiddleware = require("node-sass-middleware");
