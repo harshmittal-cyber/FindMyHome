@@ -3,6 +3,7 @@ const Owner = require("../models/owner");
 const bcrypt = require("bcrypt");
 const fs = require("fs");
 const path = require("path");
+
 module.exports.profile = function (req, res) {
   return res.render("user_profile", {
     title: "FindMyHome || Profile",

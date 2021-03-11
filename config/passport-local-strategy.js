@@ -73,7 +73,6 @@ passport.use(
 passport.use(new passportOneSessionPerUser());
 // // //serialize a user means user is stored as cookie in browser
 passport.serializeUser(function (user, done) {
-  console.log(user.id);
   done(null, user.id);
 });
 
