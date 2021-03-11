@@ -1,9 +1,18 @@
 const Bid = require("../../models/bid");
 const Property = require("../../models/property");
+const jwt = require("jsonwebtoken");
 
 module.exports.index = async function (req, res) {
   try {
-    let property = await Property.find({});
+    let property = await Property.find({})
+      .sort("-createdAt")
+      .populate("user")
+      .populate({
+        path: "bids",
+        populate: {
+          path: "user",
+        },
+      });
 
     return res.status(200).json({
       data: property,
@@ -24,6 +33,9 @@ module.exports.createproperty = async function (req, res) {
       //   user: req.user._id,
     });
     return res.status(200).json({
+      token: jwt.sign(property.toJSON(), "findmyhome", {
+        expiresIn: "600000",
+      }),
       data: {
         property: property,
       },

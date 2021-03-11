@@ -7,7 +7,7 @@ router.get("/index", property_controller.index);
 router.post("/create", property_controller.createproperty);
 
 router.delete(
-  "/destroy/:id",
+  "/delete/:id",
   passport.authenticate("jwt", { session: false }),
   property_controller.destroy
 );
