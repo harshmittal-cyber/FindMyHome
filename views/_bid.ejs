@@ -8,16 +8,30 @@
         style="width: 45px; height: 45px; border-radius: 50px"
       />
       <p><%=bid.text%></p>
-      <a href="/bid/destroy/<%=bid.id%>">Delete </a>
-
+      <p><a href="/bid/destroy/<%=bid.id%>">Delete </a></p>
+      <!-- Bid status :Pending , Rejected or Accepted -->
+      <%if(bid.status.pending){%>
+      <p><b>Pending</b>:<%=bid.status.pending%></p>
+      <%}else if(bid.status.accept){%>
+      <p><b>Accepted</b>:<%=bid.status.accept%></p>
       <%}else{%>
+      <p><b>Rejected</b>:<%=bid.status.rejected%></p>
+      <%}%> <%}else{%>
       <img
         src="<%=bid.user.avatar%>"
         style="width: 45px; height: 45px; border-radius: 50px"
       />
       <p><%=bid.text%></p>
       <p><%=bid.user.name%></p>
-      <%}%>
+      <!-- Bid status :Pending , Rejected or Accepted -->
+
+      <%if(bid.status.pending){%>
+      <p><b>Pending</b>:<%=bid.status.pending%></p>
+      <%}else if(bid.status.accept){%>
+      <p><b>Accepted</b>:<%=bid.status.accept%></p>
+      <%}else{%>
+      <p><b>Rejected</b>:<%=bid.status.rejected%></p>
+      <%}%> <%}%>
     </li>
   </ul>
 </div>

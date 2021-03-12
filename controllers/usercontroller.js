@@ -127,7 +127,7 @@ module.exports.update = async function (req, res) {
     try {
       let user = await User.findById(req.params.id);
 
-      User.uploadedimage(req, res, function (err) {
+      await User.uploadedimage(req, res, function (err) {
         if (err) {
           console.log("Multer error", err);
         }

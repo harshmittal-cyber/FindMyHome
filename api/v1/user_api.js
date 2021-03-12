@@ -15,21 +15,24 @@ module.exports.createSession = async function (req, res) {
 
     //if user fetched the detailes of tenant
     if (user) {
-      bcrypt.compare(req.body.password, user.password, function (err, result) {
-        //if err occures show the error to the user
-        if (err) {
-          console.log("error", err);
-          return res.status(400).json({
-            message: "Bad connection check your internet connection",
-          });
-        }
-        //if request is fetched then send the jwt token to the user
+      let result = await bcrypt.compare(req.body.password, user.password);
+
+      //if password matched then signin the user
+      if (result) {
         return res.status(200).json({
-          message: "Tenant signed in successfully",
+          message: "Tenant Signed In successfully",
           data: jwt.sign(user.toJSON(), "findmyhome", {
             expiresIn: "600000",
           }),
         });
+      } else {
+        return res.status(400).json({
+          message: "Password Not Matched",
+        });
+      }
+    } else {
+      return res.status(422).json({
+        message: "Invalid User || SIGN UP YOUR DETAILS",
       });
     }
   } catch (err) {

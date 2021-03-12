@@ -16,6 +16,11 @@ const bidSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Property",
     },
+    status: {
+      pending: { type: Boolean, default: true },
+      accept: { type: Boolean, default: false },
+      rejected: { type: Boolean, default: false },
+    },
   },
   {
     timestamps: true,
