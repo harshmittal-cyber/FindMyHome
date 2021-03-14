@@ -17,7 +17,7 @@ module.exports.profile = async function (req, res) {
         },
       });
 
-    let user = Owner.findById(req.params.id);
+    let user = await Owner.findById(req.params.id);
 
     return res.render("owner_profile", {
       title: "FindMyHome || OwnerProfile",

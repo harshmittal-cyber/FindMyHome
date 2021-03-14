@@ -8,7 +8,7 @@ const { route } = require("./api");
 router.get(
   "/profile/:id",
   function (req, res, next) {
-    if (req.isAuthenticated() && req.user.isAdmin) {
+    if (req.isAuthenticated() && (req.user.isAdmin || !req.user.isAdmin)) {
       return next();
     } else {
       return res.redirect("back");

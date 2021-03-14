@@ -1,5 +1,6 @@
-<h1>Hi landlord</h1>
-<% if(locals.user && locals.user.isAdmin) {%>
+ 
+<% if( user.id==owner_user.id) {%>
+  <h1>Hi Landlord</h1>
 <img
   src="<%=user.avatar%>"
   alt="<%=user.name%>"
@@ -28,6 +29,10 @@
 </section>
 <% }else
 {%>
-<p><a href="/owner/signin">SignIn</a></p>
-<p><a href="/owner/signup">Signup</a></p>
+  <p><a href="/">Home</a></p>
+<h1>Landlord</h1>
+<img src="<%=owner_user.avatar%>" style="height: 55px; width: 55px; border-radius: 50%;">
+<p><%=owner_user.name%></p>
+<p><%=owner_user.email%></p>
+<p><%=owner_user.phone%></p>
 <% } %>
