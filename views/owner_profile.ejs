@@ -1,5 +1,5 @@
  
-<% if( user.id==owner_user.id) {%>
+<% if(locals.user && locals.user.isAdmin && user.id==owner_user.id) {%>
   <h1>Hi Landlord</h1>
 <img
   src="<%=user.avatar%>"
@@ -27,12 +27,14 @@
   <p> <%-include('_profileproperty')%></p> 
   <%}%> 
 </section>
-<% }else
+<% }
+<!-- if owner id not matched then show only info -->
+else
 {%>
-  <p><a href="/">Home</a></p>
-<h1>Landlord</h1>
+<h1>Landlord Profile</h1>
 <img src="<%=owner_user.avatar%>" style="height: 55px; width: 55px; border-radius: 50%;">
 <p><%=owner_user.name%></p>
 <p><%=owner_user.email%></p>
 <p><%=owner_user.phone%></p>
+<p><a href="/">Home</a></p>
 <% } %>

@@ -11,6 +11,7 @@ router.get(
     if (req.isAuthenticated() && (req.user.isAdmin || !req.user.isAdmin)) {
       return next();
     } else {
+      req.flash("error", "Log in to see Landlord Profile");
       return res.redirect("back");
     }
   },

@@ -1,4 +1,3 @@
-const { localsName } = require("ejs");
 const Bid = require("../models/bid");
 const Property = require("../models/property");
 

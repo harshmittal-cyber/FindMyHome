@@ -80,7 +80,7 @@ module.exports.create = async function (req, res) {
     let user = await User.findOne({ email: req.body.email });
 
     if (user) {
-      req.flash("error", "User already exist as a Buyer");
+      req.flash("error", "User Phone no. already exist");
       return res.redirect("back");
     }
 

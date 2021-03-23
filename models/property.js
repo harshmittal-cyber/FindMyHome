@@ -30,10 +30,6 @@ const propertySchema = new mongoose.Schema(
         ref: "Bid",
       },
     ],
-    status: {
-      sold: { type: Boolean, default: false, ref: "Bid" },
-      Pending: { type: Boolean, default: true, ref: "Bid" },
-    },
   },
   {
     timestamps: true,
