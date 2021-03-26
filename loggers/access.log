@@ -178,3 +178,6 @@
 [0mGET / [32m200[0m 1454.255 ms - 2333[0m
 [0mGET /images/owners/avatar/avatar-1616487735365 [33m404[0m 413.462 ms - 180[0m
 [0mGET /images/users/avatar/avatar-1616488154322 [33m404[0m 416.279 ms - 179[0m
+[0mGET / [0m-[0m - ms - -[0m
+[0mGET / [32m200[0m 2338.600 ms - 761[0m
+[0mGET /favicon.ico [33m404[0m 368.127 ms - 150[0m
