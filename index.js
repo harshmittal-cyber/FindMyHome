@@ -1,5 +1,8 @@
 const express = require("express");
+const env = require("./config/env");
+const logger = require("morgan");
 const app = express();
+const helper = require("./config/view-helpers")(app);
 const port = process.env.PORT || 4000;
 const cookieParser = require("cookie-parser");
 const expressLayouts = require("express-ejs-layouts");
@@ -15,6 +18,8 @@ const MongoStore = require("connect-mongo")(session);
 const flash = require("connect-flash");
 const customMware = require("./config/middleware");
 const bodyParser = require("body-parser");
+const path = require("path");
+const dotenv = require("dotenv").config();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -22,19 +27,21 @@ app.use(bodyParser.json());
 //for cookies
 app.use(cookieParser());
 
-app.use(
-  sassMiddleware({
-    src: "./assets/scss",
-    dest: "./assets/css",
-    debug: false,
-    outputStyle: "extended",
-    prefix: "/css",
-  })
-);
-
+if (env.name == "development") {
+  app.use(
+    sassMiddleware({
+      src: path.join(__dirname, env.asset_path, "scss"),
+      dest: path.join(__dirname, env.asset_path, "css"),
+      debug: false,
+      outputStyle: "extended",
+      prefix: "/css",
+    })
+  );
+}
 //for layouts
-app.use(express.static("./assets"));
+app.use(express.static(env.asset_path));
 app.use("/images", express.static(__dirname + "/images"));
+app.use(logger(env.morgan.mode, env.morgan.options));
 app.use(expressLayouts);
 
 //extract the styles
@@ -48,7 +55,7 @@ app.set("views", "./views");
 app.use(
   session({
     name: "findmyhome",
-    secret: "findmyhome",
+    secret: env.session_cookie_key,
     saveUninitialized: false,
     resave: false,
     cookie: {
@@ -81,5 +88,6 @@ app.listen(port, function (err) {
   if (err) {
     console.log(`Error in running server on port:${port}`);
   }
+  console.log(env.name);
   console.log(`Server is running on port:${port}`);
 });

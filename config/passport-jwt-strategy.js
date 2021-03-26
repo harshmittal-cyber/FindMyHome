@@ -3,10 +3,11 @@ const JWtStrategy = require("passport-jwt").Strategy;
 const ExtractJwt = require("passport-jwt").ExtractJwt;
 const User = require("../models/user");
 const Owner = require("../models/owner");
+const env = require("./env");
 
 let opts = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-  secretOrKey: "findMyHome",
+  secretOrKey: env.jwt_secretOrKey,
 };
 
 passport.use(

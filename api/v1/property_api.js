@@ -1,6 +1,7 @@
 const Bid = require("../../models/bid");
 const Property = require("../../models/property");
 const jwt = require("jsonwebtoken");
+const env = require("../../config/env");
 
 module.exports.index = async function (req, res) {
   try {
@@ -33,7 +34,7 @@ module.exports.createproperty = async function (req, res) {
       //   user: req.user._id,
     });
     return res.status(200).json({
-      token: jwt.sign(property.toJSON(), "findmyhome", {
+      token: jwt.sign(property.toJSON(), env.jwt_secretOrKey, {
         expiresIn: "600000",
       }),
       data: {

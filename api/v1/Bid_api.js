@@ -3,6 +3,7 @@ const e = require("express");
 const Bid = require("../../models/bid");
 const Property = require("../../models/property");
 const jwt = require("jsonwebtoken");
+const env = require("../../config/env");
 
 module.exports.createBid = async function (req, res) {
   try {
@@ -19,7 +20,7 @@ module.exports.createBid = async function (req, res) {
       property.save();
 
       return res.status(200).json({
-        token: jwt.sign(bid.toJSON(), "findmyhome", {
+        token: jwt.sign(bid.toJSON(), env.jwt_secretOrKey, {
           expiresIn: "600000",
         }),
         data: bid,

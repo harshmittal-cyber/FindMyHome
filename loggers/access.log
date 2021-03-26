@@ -1,0 +1,180 @@
+[0mGET / [36m304[0m 1513.296 ms - -[0m
+[0mGET /images/users/avatar/avatar-1616488154322 [33m404[0m 286.551 ms - 179[0m
+[0mGET /images/owners/avatar/avatar-1616487735365 [33m404[0m 308.410 ms - 180[0m
+[0mGET /owner/signin [32m200[0m 311.586 ms - 685[0m
+[0mPOST /owner/create-session/ [36m302[0m 731.885 ms - 46[0m
+[0mGET / [32m200[0m 2223.320 ms - 3173[0m
+[0mGET /images/users/avatar/avatar-1616488154322 [33m404[0m 990.528 ms - 179[0m
+[0mGET /images/owners/avatar/avatar-1616487735365 [33m404[0m 1005.208 ms - 180[0m
+[0mGET / [32m200[0m 2213.448 ms - 2899[0m
+[0mGET /images/owners/avatar/avatar-1616487735365 [33m404[0m 963.650 ms - 180[0m
+[0mGET /images/users/avatar/avatar-1616488154322 [33m404[0m 953.599 ms - 179[0m
+[0mGET / [36m304[0m 2515.588 ms - -[0m
+[0mGET /images/owners/avatar/avatar-1616487735365 [33m404[0m 999.634 ms - 180[0m
+[0mGET /images/users/avatar/avatar-1616488154322 [33m404[0m 992.259 ms - 179[0m
+[0mGET / [32m200[0m 4120.225 ms - 2951[0m
+[0mGET /cssindex.css [33m404[0m 966.648 ms - 151[0m
+[0mGET /images/owners/avatar/avatar-1616487735365 [33m404[0m 939.084 ms - 180[0m
+[0mGET /images/users/avatar/avatar-1616488154322 [33m404[0m 943.196 ms - 179[0m
+[0mGET / [36m304[0m 2512.915 ms - -[0m
+[0mGET /images/owners/avatar/avatar-1616487735365 [33m404[0m 961.765 ms - 180[0m
+[0mGET /cssindex.css [33m404[0m 992.846 ms - 151[0m
+[0mGET /images/users/avatar/avatar-1616488154322 [33m404[0m 942.821 ms - 179[0m
+[0mGET /images/owners/avatar/avatar-1616487735365 [33m404[0m 1312.760 ms - 180[0m
+[0mGET / [32m200[0m 3221.458 ms - 2952[0m
+[0mGET /images/owners/avatar/avatar-1616487735365 [33m404[0m 929.909 ms - 180[0m
+[0mGET /images/users/avatar/avatar-1616488154322 [33m404[0m 928.775 ms - 179[0m
+[0mGET / [36m304[0m 2815.579 ms - -[0m
+[0mGET /css/index.css [33m404[0m 885.039 ms - 152[0m
+[0mGET /images/owners/avatar/avatar-1616487735365 [33m404[0m 900.003 ms - 180[0m
+[0mGET /images/users/avatar/avatar-1616488154322 [33m404[0m 856.099 ms - 179[0m
+[0mGET / [36m304[0m 2091.888 ms - -[0m
+[0mGET /images/owners/avatar/avatar-1616487735365 [33m404[0m 881.964 ms - 180[0m
+[0mGET /images/users/avatar/avatar-1616488154322 [33m404[0m 871.608 ms - 179[0m
+[0mGET / [0m-[0m - ms - -[0m
+[0mGET / [32m200[0m 2755.719 ms - 2952[0m
+[0mGET /images/users/avatar/avatar-1616488154322 [33m404[0m 835.657 ms - 179[0m
+[0mGET /images/owners/avatar/avatar-1616487735365 [33m404[0m 853.863 ms - 180[0m
+[0mGET / [31m500[0m 5257.413 ms - 2350[0m
+[0mGET / [31m500[0m 2165.315 ms - 2351[0m
+[0mGET / [32m200[0m 3876.756 ms - 2938[0m
+[0mGET /images/users/avatar/avatar-1616488154322 [33m404[0m 868.570 ms - 179[0m
+[0mGET /images/owners/avatar/avatar-1616487735365 [33m404[0m 1538.040 ms - 180[0m
+[0mGET / [32m200[0m 2213.144 ms - 2948[0m
+[0mGET /undefined [33m404[0m 847.469 ms - 148[0m
+[0mGET /images/owners/avatar/avatar-1616487735365 [33m404[0m 864.996 ms - 180[0m
+[0mGET /images/users/avatar/avatar-1616488154322 [33m404[0m 891.684 ms - 179[0m
+[0mGET / [36m304[0m 2059.230 ms - -[0m
+[0mGET /images/owners/avatar/avatar-1616487735365 [33m404[0m 869.730 ms - 180[0m
+[0mGET /undefined [33m404[0m 886.976 ms - 148[0m
+[0mGET /images/users/avatar/avatar-1616488154322 [33m404[0m 867.908 ms - 179[0m
+[0mGET /images/owners/avatar/avatar-1616487735365 [33m404[0m 1164.496 ms - 180[0m
+[0mGET / [0m-[0m - ms - -[0m
+[0mGET / [32m200[0m 3265.507 ms - 2948[0m
+[0mGET /undefined [33m404[0m 861.553 ms - 148[0m
+[0mGET /images/owners/avatar/avatar-1616487735365 [33m404[0m 859.613 ms - 180[0m
+[0mGET /images/users/avatar/avatar-1616488154322 [33m404[0m 892.166 ms - 179[0m
+[0mGET /favicon.ico [33m404[0m 852.888 ms - 150[0m
+[0mGET /undefined [33m404[0m 957.601 ms - 148[0m
+[0mGET / [32m200[0m 2290.440 ms - 2963[0m
+[0mGET /images/owners/avatar/avatar-1616487735365 [33m404[0m 1008.563 ms - 180[0m
+[0mGET /css/index-37070aa967.css [33m404[0m 1013.385 ms - 163[0m
+[0mGET /images/users/avatar/avatar-1616488154322 [33m404[0m 939.220 ms - 179[0m
+[0mGET /images/owners/avatar/avatar-1616487735365 [33m404[0m 1255.429 ms - 180[0m
+[0mGET /css/index-37070aa967.css [33m404[0m 980.102 ms - 163[0m
+::1 - - [26/Mar/2021:14:20:33 +0000] "GET / HTTP/1.1" 304 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36"
+::1 - - [26/Mar/2021:14:20:33 +0000] "GET /images/owners/avatar/avatar-1616487735365 HTTP/1.1" 404 180 "http://localhost:2000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36"
+::1 - - [26/Mar/2021:14:20:34 +0000] "GET /images/users/avatar/avatar-1616488154322 HTTP/1.1" 404 179 "http://localhost:2000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36"
+::1 - - [26/Mar/2021:14:20:55 +0000] "GET / HTTP/1.1" 304 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36"
+::1 - - [26/Mar/2021:14:20:56 +0000] "GET /images/users/avatar/avatar-1616488154322 HTTP/1.1" 404 179 "http://localhost:2000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36"
+::1 - - [26/Mar/2021:14:20:56 +0000] "GET /images/owners/avatar/avatar-1616487735365 HTTP/1.1" 404 180 "http://localhost:2000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36"
+::1 - - [26/Mar/2021:14:27:20 +0000] "GET / HTTP/1.1" 200 2963 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36"
+::1 - - [26/Mar/2021:14:27:21 +0000] "GET /images/owners/avatar/avatar-1616487735365 HTTP/1.1" 404 180 "http://localhost:2000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36"
+::1 - - [26/Mar/2021:14:27:22 +0000] "GET /images/users/avatar/avatar-1616488154322 HTTP/1.1" 404 179 "http://localhost:2000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36"
+::1 - - [26/Mar/2021:14:27:23 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://localhost:2000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36"
+::1 - - [26/Mar/2021:14:28:24 +0000] "GET /owner/profile/6059a5194c31c90016e64209 HTTP/1.1" 200 2076 "http://localhost:2000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36"
+::1 - - [26/Mar/2021:14:28:25 +0000] "GET /images/owners/avatar/avatar-1616487735365 HTTP/1.1" 404 180 "http://localhost:2000/owner/profile/6059a5194c31c90016e64209" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36"
+::1 - - [26/Mar/2021:14:28:25 +0000] "GET /images/users/avatar/avatar-1616488154322 HTTP/1.1" 404 179 "http://localhost:2000/owner/profile/6059a5194c31c90016e64209" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36"
+::1 - - [26/Mar/2021:14:28:35 +0000] "GET /owner/destroysession/6059a5194c31c90016e64209%3E HTTP/1.1" 302 46 "http://localhost:2000/owner/profile/6059a5194c31c90016e64209" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36"
+::1 - - [26/Mar/2021:14:28:36 +0000] "GET / HTTP/1.1" - - "http://localhost:2000/owner/profile/6059a5194c31c90016e64209" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36"
+[0mGET / [32m200[0m 4614.321 ms - 2126[0m
+[0mGET /css/index-37070aa967.css [33m404[0m 379.458 ms - 163[0m
+[0mGET /images/owners/avatar/avatar-1616487735365 [33m404[0m 372.628 ms - 180[0m
+[0mGET /images/users/avatar/avatar-1616488154322 [33m404[0m 292.221 ms - 179[0m
+[0mGET /favicon.ico [33m404[0m 283.602 ms - 150[0m
+[0mGET / [36m304[0m 4743.575 ms - -[0m
+[0mGET /css/index-37070aa967.css [33m404[0m 295.707 ms - 163[0m
+[0mGET /images/owners/avatar/avatar-1616487735365 [33m404[0m 287.588 ms - 180[0m
+[0mGET /images/users/avatar/avatar-1616488154322 [33m404[0m 292.956 ms - 179[0m
+[0mGET /css/index-37070aa967.css [33m404[0m 416.251 ms - 163[0m
+[0mGET / [32m200[0m 1511.287 ms - 2111[0m
+[0mGET /undefined [33m404[0m 282.158 ms - 148[0m
+[0mGET /images/owners/avatar/avatar-1616487735365 [33m404[0m 284.674 ms - 180[0m
+[0mGET /images/users/avatar/avatar-1616488154322 [33m404[0m 291.961 ms - 179[0m
+[0mGET / [32m200[0m 2851.560 ms - 2115[0m
+[0mGET /images/users/avatar/avatar-1616488154322 [33m404[0m 363.044 ms - 179[0m
+[0mGET /images/owners/avatar/avatar-1616487735365 [33m404[0m 397.719 ms - 180[0m
+[0mGET / [36m304[0m 1533.231 ms - -[0m
+[0mGET /images/owners/avatar/avatar-1616487735365 [33m404[0m 416.433 ms - 180[0m
+[0mGET /images/users/avatar/avatar-1616488154322 [33m404[0m 403.560 ms - 179[0m
+[0mGET / [32m200[0m 3012.973 ms - 2114[0m
+[0mGET /images/users/avatar/avatar-1616488154322 [33m404[0m 356.290 ms - 179[0m
+[0mGET /images/owners/avatar/avatar-1616487735365 [33m404[0m 384.682 ms - 180[0m
+::1 - - [26/Mar/2021:14:37:16 +0000] "GET / HTTP/1.1" 200 2126 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36"
+::1 - - [26/Mar/2021:14:37:16 +0000] "GET /images/owners/avatar/avatar-1616487735365 HTTP/1.1" 404 180 "http://localhost:2000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36"
+::1 - - [26/Mar/2021:14:37:16 +0000] "GET /images/users/avatar/avatar-1616488154322 HTTP/1.1" 404 179 "http://localhost:2000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36"
+[0mGET / [32m200[0m 5712.398 ms - 2114[0m
+[0mGET /images/owners/avatar/avatar-1616487735365 [33m404[0m 408.837 ms - 180[0m
+[0mGET /images/users/avatar/avatar-1616488154322 [33m404[0m 386.079 ms - 179[0m
+[0mGET / [36m304[0m 1696.536 ms - -[0m
+[0mGET /images/owners/avatar/avatar-1616487735365 [33m404[0m 287.430 ms - 180[0m
+[0mGET /images/users/avatar/avatar-1616488154322 [33m404[0m 295.645 ms - 179[0m
+[0mGET /owner/signin [32m200[0m 431.365 ms - 775[0m
+[0mGET /owner/css/index.css [33m404[0m 292.120 ms - 158[0m
+[0mGET /images/owners/avatar/avatar-1616487735365 [33m404[0m 299.317 ms - 180[0m
+[0mGET /images/users/avatar/avatar-1616488154322 [33m404[0m 316.082 ms - 179[0m
+[0mGET /users/signin [32m200[0m 431.164 ms - 734[0m
+[0mGET /users/css/index.css [33m404[0m 423.041 ms - 158[0m
+[0mGET /users/signup [32m200[0m 374.684 ms - 985[0m
+[0mGET /users/css/index.css [33m404[0m 297.732 ms - 158[0m
+[0mPOST /users/create [36m302[0m 1368.524 ms - 70[0m
+[0mGET /users/signin [36m304[0m 291.287 ms - -[0m
+[0mGET /users/css/index.css [33m404[0m 283.874 ms - 158[0m
+[0mPOST /users/createSession [36m302[0m 1338.745 ms - 46[0m
+[0mGET / [36m304[0m 2317.353 ms - -[0m
+[0mGET /images/users/avatar/avatar-1616488154322 [33m404[0m 568.649 ms - 179[0m
+[0mGET /images/owners/avatar/avatar-1616487735365 [33m404[0m 640.005 ms - 180[0m
+[0mGET /users/signin [36m302[0m 736.195 ms - 46[0m
+[0mGET / [32m200[0m 1777.150 ms - 2493[0m
+[0mGET /images/users/avatar/avatar-1616488154322 [33m404[0m 568.122 ms - 179[0m
+[0mGET /images/owners/avatar/avatar-1616487735365 [33m404[0m 589.053 ms - 180[0m
+[0mGET / [32m200[0m 1848.300 ms - 2494[0m
+[0mGET /images/owners/avatar/avatar-1616487735365 [33m404[0m 717.066 ms - 180[0m
+[0mGET /images/users/avatar/avatar-1616488154322 [33m404[0m 702.063 ms - 179[0m
+[0mGET /users/profile/605df1f56df5fb77a08c7e2a [32m200[0m 598.832 ms - 978[0m
+[0mGET /users/destroysession/605df1f56df5fb77a08c7e2a [36m302[0m 582.626 ms - 46[0m
+[0mGET / [36m304[0m 1712.307 ms - -[0m
+[0mGET /images/owners/avatar/avatar-1616487735365 [33m404[0m 289.490 ms - 180[0m
+[0mGET /images/users/avatar/avatar-1616488154322 [33m404[0m 298.283 ms - 179[0m
+[0mGET / [32m200[0m 5365.746 ms - 2114[0m
+[0mGET /images/owners/avatar/avatar-1616487735365 [33m404[0m 293.283 ms - 180[0m
+[0mGET /images/users/avatar/avatar-1616488154322 [33m404[0m 286.990 ms - 179[0m
+[0mGET /users/signin [32m200[0m 293.655 ms - 734[0m
+[0mGET /users/css/index.css [33m404[0m 292.535 ms - 158[0m
+[0mPOST /users/createSession [36m302[0m 1476.043 ms - 46[0m
+[0mGET / [36m304[0m 1520.098 ms - -[0m
+[0mGET /images/owners/avatar/avatar-1616487735365 [33m404[0m 585.839 ms - 180[0m
+[0mGET /images/users/avatar/avatar-1616488154322 [33m404[0m 710.782 ms - 179[0m
+[0mGET / [32m200[0m 2100.193 ms - 2441[0m
+[0mGET /images/users/avatar/avatar-1616488154322 [33m404[0m 680.354 ms - 179[0m
+[0mGET /images/owners/avatar/avatar-1616487735365 [33m404[0m 681.505 ms - 180[0m
+[0mGET /users/destroysession/605df1f56df5fb77a08c7e2a [36m302[0m 1458.853 ms - 46[0m
+[0mGET / [36m304[0m 2637.219 ms - -[0m
+[0mGET /images/owners/avatar/avatar-1616487735365 [33m404[0m 331.680 ms - 180[0m
+[0mGET /images/users/avatar/avatar-1616488154322 [33m404[0m 333.715 ms - 179[0m
+[0mGET /users/destroysession/605df1f56df5fb77a08c7e2a [36m302[0m 585.228 ms - 46[0m
+[0mGET / [32m200[0m 1800.606 ms - 2333[0m
+[0mGET /images/users/avatar/avatar-1616488154322 [33m404[0m 435.225 ms - 179[0m
+[0mGET /images/owners/avatar/avatar-1616487735365 [33m404[0m 562.734 ms - 180[0m
+[0mGET / [32m200[0m 1773.905 ms - 2062[0m
+[0mGET /images/users/avatar/avatar-1616488154322 [33m404[0m 319.051 ms - 179[0m
+[0mGET /images/owners/avatar/avatar-1616487735365 [33m404[0m 323.545 ms - 180[0m
+[0mGET / [36m304[0m 4839.093 ms - -[0m
+[0mGET /images/owners/avatar/avatar-1616487735365 [33m404[0m 290.270 ms - 180[0m
+[0mGET /images/users/avatar/avatar-1616488154322 [33m404[0m 291.109 ms - 179[0m
+[0mGET /users/signin [32m200[0m 301.595 ms - 682[0m
+[0mPOST /users/createSession [36m302[0m 686.624 ms - 46[0m
+[0mGET / [32m200[0m 1939.464 ms - 2715[0m
+[0mGET /images/owners/avatar/avatar-1616487735365 [33m404[0m 720.495 ms - 180[0m
+[0mGET /images/users/avatar/avatar-1616488154322 [33m404[0m 726.945 ms - 179[0m
+[0mGET /users/profile/605df1f56df5fb77a08c7e2a [32m200[0m 1288.085 ms - 925[0m
+[0mGET / [32m200[0m 2525.351 ms - 2441[0m
+[0mGET /images/users/avatar/avatar-1616488154322 [33m404[0m 581.376 ms - 179[0m
+[0mGET /images/owners/avatar/avatar-1616487735365 [33m404[0m 585.103 ms - 180[0m
+[0mGET /users/profile/605df1f56df5fb77a08c7e2a [36m304[0m 1340.650 ms - -[0m
+[0mPOST /users/update/605df1f56df5fb77a08c7e2a [36m302[0m 886.020 ms - 164[0m
+[0mGET /users/profile/605df1f56df5fb77a08c7e2a [32m200[0m 594.523 ms - 966[0m
+[0mGET /users/destroysession/605df1f56df5fb77a08c7e2a [36m302[0m 587.386 ms - 46[0m
+[0mGET / [32m200[0m 1454.255 ms - 2333[0m
+[0mGET /images/owners/avatar/avatar-1616487735365 [33m404[0m 413.462 ms - 180[0m
+[0mGET /images/users/avatar/avatar-1616488154322 [33m404[0m 416.279 ms - 179[0m

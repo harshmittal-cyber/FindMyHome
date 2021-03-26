@@ -2,6 +2,7 @@ const Owner = require("../../models/owner");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const User = require("../../models/user");
+const env = require("../../config/env");
 
 module.exports.createSession = async function (req, res) {
   try {
@@ -12,7 +13,7 @@ module.exports.createSession = async function (req, res) {
       if (result) {
         return res.status(200).json({
           message: "Owner Signed In successfully",
-          data: jwt.sign(owner.toJSON(), "findmyhome", {
+          data: jwt.sign(owner.toJSON(), env.jwt_secretOrKey, {
             expiresIn: "600000",
           }),
         });
