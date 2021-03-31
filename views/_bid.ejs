@@ -1,6 +1,6 @@
-<div style="margin-left: 10px">
+<div style="margin-left: 10px" id="bid-list">
   <ul>
-    <li>
+    <li id="<%=bid._id%>">
       <%if(locals.user && !locals.user.isAdmin &&
       locals.user.id==bid.user.id){%>
       <img
@@ -9,7 +9,6 @@
       />
       <p><%=bid.text%></p>
       <p><a href="/bid/destroy/<%=bid.id%>">Delete </a></p>
-      <!-- Bid status :Pending , Rejected or Accepted -->
       <%}else{%>
       <img
         src="<%=bid.user.avatar%>"
@@ -17,8 +16,6 @@
       />
       <p><%=bid.text%></p>
       <p><%=bid.user.name%></p>
-
-      <!-- Bid status :Pending , Rejected or Accepted -->
 
       <%}%>
     </li>

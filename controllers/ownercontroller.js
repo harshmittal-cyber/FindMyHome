@@ -34,6 +34,9 @@ module.exports.signin = function (req, res) {
   if (req.isAuthenticated()) {
     return res.redirect("/");
   }
+  if (req.xhr) {
+    return;
+  }
   return res.render("owner_signin", {
     title: "FindMyHome || OwnerSignin",
   });
@@ -80,7 +83,7 @@ module.exports.create = async function (req, res) {
     let user = await User.findOne({ email: req.body.email });
 
     if (user) {
-      req.flash("error", "User Phone no. already exist");
+      req.flash("error", "User already exist");
       return res.redirect("back");
     }
 
@@ -97,24 +100,26 @@ module.exports.create = async function (req, res) {
       let owner = await Owner.findOne({ email: req.body.email });
 
       if (!owner) {
-        bcrypt.hash(req.body.password, 10, function (err, hash) {
-          Owner.create(
-            {
-              email: req.body.email,
-              password: hash,
-              name: req.body.name,
-              phone: req.body.phone,
-              place: req.body.place,
-            },
-            function (err, user) {
-              if (err) {
-                return res.status(500).send("Error in creating a user");
-              }
-              req.flash("success", "User created successfully");
-              return res.redirect("/owner/signin");
-            }
-          );
+        let hash = await bcrypt.hash(req.body.password, 10);
+
+        let owner = await Owner.create({
+          email: req.body.email,
+          password: hash,
+          name: req.body.name,
+          phone: req.body.phone,
+          place: req.body.place,
         });
+
+        if (req.xhr) {
+          return res.status(200).json({
+            data: {
+              owner: owner,
+            },
+            message: "User created successfully",
+          });
+        }
+        req.flash("success", "User created successfully");
+        return res.redirect("/owner/signin");
       } else {
         req.flash("error", "User already exist with phone or email");
         return res.redirect("/owner/signin");
@@ -134,8 +139,10 @@ module.exports.createSession = function (req, res) {
 module.exports.update = async function (req, res) {
   if (req.user.id == req.params.id) {
     try {
+      //find owner by id
       let owner = await Owner.findById(req.params.id);
 
+      //owner update function
       Owner.uploadedimage(req, res, function (err) {
         if (err) {
           console.log("Error in updating a profile", err);
@@ -150,8 +157,18 @@ module.exports.update = async function (req, res) {
           owner.avatar = Owner.avatarPath + "/" + req.file.filename;
         }
         owner.save();
-        return res.redirect("back");
       });
+
+      //when xhr request accept then send this data
+      if (req.xhr) {
+        return res.status(200).json({
+          data: {
+            owner: owner,
+          },
+          message: "Owner profile update successfully",
+        });
+      }
+      // return res.redirect("back");
     } catch (err) {
       console.log("error", err);
     }

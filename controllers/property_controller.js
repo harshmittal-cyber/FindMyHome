@@ -4,13 +4,23 @@ const { localsName } = require("ejs");
 
 module.exports.createproperty = async function (req, res) {
   try {
-    await Property.create({
+    let property = await Property.create({
       text: req.body.text,
       place: req.body.place,
       price: req.body.price,
       user: req.user._id,
     });
+    //if req is xmlhttprequest the show the data
+    if (req.xhr) {
+      property = await property.populate("user").execPopulate();
+      return res.status(200).json({
+        data: {
+          property: property,
+        },
 
+        message: "Property Listed successfully",
+      });
+    }
     req.flash("success", "Property Listed Successfully");
     return res.redirect("back");
   } catch (err) {

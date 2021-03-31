@@ -11,7 +11,16 @@ module.exports.createBid = async function (req, res) {
         property: req.body.property,
         user: req.user._id,
       });
-
+      // if (req.xhr) {
+      //   bid = await bid.populate("user").execPopulate();
+      //   console.log(bid);
+      //   return res.status(200).json({
+      //     data: {
+      //       bid: bid,
+      //     },
+      //     message: "Bid Created successfully",
+      //   });
+      // }
       property.bids.push(bid);
       property.save();
 

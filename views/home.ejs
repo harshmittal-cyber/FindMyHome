@@ -8,7 +8,7 @@
   </p>
   <p><a href="/owner/destroysession/<%=user.id%>">SignOut</a></p>
   <!-- Property form -->
-  <form action="/property/create" method="POST">
+  <form action="/property/create" method="POST" id="property-form">
     <textarea
       name="text"
       placeholder="Enter your property details"
@@ -18,7 +18,6 @@
     ><br />
     <input type="text" name="price" placeholder="Enter price" />
     <input type="text" name="place" placeholder="Enter place" />
-    <!-- <input type="file" name="avatar" /> -->
     <input type="submit" value="Post" />
   </form>
 </section>
@@ -66,8 +65,10 @@
     <%}%>
   </p>
 </section>
-<section style="width: 70%">
-  <%for(property of properties){%>
-  <p><%-include('_property');%></p>
-  <%}%>
+<section style="width: 70%" id="property-list">
+  <ul>
+    <%for(property of properties){%>
+    <p><%-include('_property');%></p>
+    <%}%>
+  </ul>
 </section>

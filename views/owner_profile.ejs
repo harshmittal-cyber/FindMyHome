@@ -1,26 +1,32 @@
  
 <% if(locals.user && locals.user.isAdmin && user.id==owner_user.id) {%>
   <h1>Hi Landlord</h1>
+
+<form
+  method="POST"
+  action="/owner/update/<%=user._id%>"
+  enctype="multipart/form-data"
+  id="owner-update"
+>
+  <input type="email" name="email" value="<%=user.email%>" />
+  <input type="name" name="name" value="<%=user.name%>" />
+  <input type="file" name="avatar" value="<%=user.name%>" />
+  <input type="text" hidden value="<%=user._id%>" name="userid">
+  <input type="submit" />
+</form>
+<div id="owner-profile-update">
 <img
   src="<%=user.avatar%>"
   alt="<%=user.name%>"
   style="height: 100px; width: 100px"
 />
-<form
-  method="POST"
-  action="/owner/update/<%=user.id%>"
-  enctype="multipart/form-data"
->
-  <input type="email" name="email" value="<%=user.email%>" />
-  <input type="name" name="name" value="<%=user.name%>" />
-  <input type="file" name="avatar" value="<%=user.name%>" />
-  <input type="submit" />
-</form>
 <p><%=user.name%></p>
 <p><%=user.email%></p> 
 <p><%=user.phone%></p>
-<p><a href="/owner/destroysession/<%=user.id%>>">SignOut</a></p>
+<p><a href="/owner/destroysession/<%=user._id%>>">SignOut</a></p>
 <p><a href="/">Home</a></p>
+</div>
+
 <p><h1>My Properties</h1></p>
 <section>
 <%for(property of properties){%>
