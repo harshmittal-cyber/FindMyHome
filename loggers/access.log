@@ -1009,3 +1009,8 @@
 [0mGET / [32m200[0m 1904.469 ms - 2871[0m
 [0mGET /owner/profile/6064386a4196d224b0590585 [36m304[0m 1850.125 ms - -[0m
 [0mPOST /owner/update/6064386a4196d224b0590585 [0m-[0m - ms - -[0m
+[0mGET / [32m200[0m 2776.408 ms - 2303[0m
+[0mGET /api/v1/index [33m404[0m 325.190 ms - 151[0m
+[0mGET /api/v1/property/index [32m200[0m 923.628 ms - 490[0m
+[0mGET /favicon.ico [33m404[0m 310.865 ms - 150[0m
+[0mGET /api/v1/property/index [32m200[0m 1751.684 ms - 416[0m

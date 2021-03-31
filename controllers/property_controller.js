@@ -12,7 +12,7 @@ module.exports.createproperty = async function (req, res) {
     });
     //if req is xmlhttprequest the show the data
     if (req.xhr) {
-      property = await property.populate("user").execPopulate();
+      property = await property.populate("user", "-password").execPopulate();
       return res.status(200).json({
         data: {
           property: property,
