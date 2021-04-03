@@ -3,6 +3,20 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const User = require("../../models/user");
 const env = require("../../config/env");
+const { json } = require("body-parser");
+
+module.exports.owner = async function (req, res) {
+  try {
+    let owner = await Owner.find({});
+    return res.status(200).json({
+      owner: owner,
+    });
+  } catch (err) {
+    return res.status(500).json({
+      message: "Internal server error",
+    });
+  }
+};
 
 module.exports.createSession = async function (req, res) {
   try {

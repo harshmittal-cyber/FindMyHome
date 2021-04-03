@@ -1,18 +1,19 @@
 const express = require("express");
-const router = express.Router();
-const bid_controller = require("../../../api/v1/Bid_api");
 const passport = require("passport");
+const router = express.Router();
+const property_controller = require("../../api/v1/property_api");
 
+router.get("/index", property_controller.index);
 router.post(
   "/create",
   passport.authenticate("jwt", { session: false }),
-  bid_controller.createBid
+  property_controller.createproperty
 );
 
 router.delete(
   "/delete/:id",
   passport.authenticate("jwt", { session: false }),
-  bid_controller.destroyBid
+  property_controller.destroy
 );
 
 module.exports = router;

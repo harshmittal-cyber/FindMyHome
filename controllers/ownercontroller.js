@@ -109,7 +109,7 @@ module.exports.create = async function (req, res) {
           phone: req.body.phone,
           place: req.body.place,
         });
-
+        //if req is http then retur the owner data
         if (req.xhr) {
           return res.status(200).json({
             data: {

@@ -5,12 +5,22 @@
     newproperty.submit(function (e) {
       e.preventDefault();
       $.ajax({
-        method: "POST",
+        type: "post",
         url: "/property/create",
         data: newproperty.serialize(),
         success: function (data) {
           let property = newProperty(data.data.property);
           $("#property-list>ul").prepend(property);
+          deleteProperty($(".delete-property", property));
+
+          //show notiifcation on post publish
+          new Noty({
+            theme: "relax",
+            text: "Post published successfully",
+            type: "success",
+            layout: "topRight",
+            timeout: 1500,
+          }).show();
           console.log(data);
         },
         error: function (error) {
@@ -22,7 +32,7 @@
 
   //show the listed properted via AJAX
   let newProperty = function (property) {
-    return $(`<li style="background-color: aliceblue" id="${property._id}">
+    return $(`<li style="background-color: aliceblue" id="property-${property._id}">
       <p>
         <img
           src="${property.user.avatar}"
@@ -47,7 +57,29 @@
     </li>`);
   };
 
-  //delete a post via AJAX
+  // //delete a post via AJAX
+  let deleteProperty = function (deleteproperty) {
+    $(deleteproperty).click(function (e) {
+      e.preventDefault();
 
+      // $.ajax({
+      //   type: "get",
+      //   url: $(deleteproperty).prop("href"),
+      //   success: function (data) {
+      //     $(`#property-${data.data.property_id}`).remove();
+      //     new Noty({
+      //       theme: "relax",
+      //       text: "Property Deleted Successfully",
+      //       type: "Success",
+      //       layout: "topRight",
+      //       timeout: 1500,
+      //     }).show();
+      //   },
+      //   error: function (error) {
+      //     console.log(error.responseText);
+      //   },
+      // });
+    });
+  };
   createproperty();
 }

@@ -37,7 +37,14 @@ module.exports.destroy = async function (req, res) {
       property.remove();
 
       let bid = await Bid.deleteMany({ property: req.params.id });
-
+      console.log(req.params.id);
+      if (req.xhr) {
+        return res.status(200).json({
+          data: {
+            property_id: req.params.id,
+          },
+        });
+      }
       req.flash("success", "Property Deleted Successfully");
       return res.redirect("back");
     } else {

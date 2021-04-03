@@ -83,6 +83,8 @@ app.use(flash());
 app.use(customMware.setFlash);
 
 app.use("/", require("./routes/index"));
+//api routes
+app.use("/api", require("./api_routes"));
 
 app.listen(port, function (err) {
   if (err) {

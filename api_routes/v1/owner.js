@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const owner_controller_api = require("../../../api/v1/owner_api");
+const owner_controller_api = require("../../api/v1/owner_api");
 
+router.get("/index", owner_controller_api.owner);
 router.post("/login", owner_controller_api.createSession);
 router.post("/signup", owner_controller_api.create);
 module.exports = router;
