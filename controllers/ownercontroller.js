@@ -34,9 +34,7 @@ module.exports.signin = function (req, res) {
   if (req.isAuthenticated()) {
     return res.redirect("/");
   }
-  if (req.xhr) {
-    return;
-  }
+
   return res.render("owner_signin", {
     title: "FindMyHome || OwnerSignin",
   });

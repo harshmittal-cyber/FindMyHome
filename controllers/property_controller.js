@@ -1,6 +1,5 @@
 const Property = require("../models/property");
 const Bid = require("../models/bid");
-const { localsName } = require("ejs");
 
 module.exports.createproperty = async function (req, res) {
   try {

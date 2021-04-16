@@ -3,11 +3,36 @@ const Owner = require("../models/owner");
 const bcrypt = require("bcrypt");
 const fs = require("fs");
 const path = require("path");
+const Bid = require("../models/bid");
+const Property = require("../models/property");
 
-module.exports.profile = function (req, res) {
-  return res.render("user_profile", {
-    title: "FindMyHome || Profile",
-  });
+module.exports.profile = async function (req, res) {
+  try {
+    let properties = await Property.find({})
+      .sort("-createdAt")
+      .populate("user")
+      .populate({
+        path: "bids",
+        populate: {
+          path: "user",
+        },
+      });
+
+    let bid = await Bid.find({});
+
+    let user = await User.findById(req.params.id);
+
+    return res.render("user_profile", {
+      title: "FindMyHome || Profile",
+      bid: bid,
+      property: properties,
+      user: user,
+    });
+  } catch (err) {
+    return res.status(404).json({
+      message: "Internal server error",
+    });
+  }
 };
 
 //rendering signin page

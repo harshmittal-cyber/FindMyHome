@@ -27,7 +27,7 @@ module.exports.createBid = async function (req, res) {
         message: "Bid created Successfully",
       });
     } else {
-      return res.status(401).json({
+      return res.status(404).json({
         message: "You cannot Bid on unknown property",
       });
     }

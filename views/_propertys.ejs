@@ -1,0 +1,36 @@
+<li style="background-color: aliceblue" id="property-<%=property._id%>">
+  <p>
+    <img
+      src="<%=property.user.avatar%>"
+      style="height: 50px; width: 50px; border-radius: 50px"
+    />
+  </p>
+  <p>Owner:<b><%=property.user.name%></b></p>
+
+  <p>Property Details:<b> <%=property.text%></b></p>
+  <p>Property Place:<b> <%=property.place%></b></p>
+  <p>Property Price:<b> <%=property.price%></b></p>
+  <%if(locals.user && locals.user.isAdmin &&
+  locals.user.id==property.user.id){%>
+  <a
+    class="delete-property"
+    href="/property/destroy/<%=property.id%>"
+    style="text-decoration: none"
+    >Delete</a
+  >
+  <%}%>
+
+  <!-- if user is tenant the show the bid form -->
+  <%if(locals.user && !locals.user.isAdmin){%>
+  <form method="POST" action="/bid/create" id="bid-form">
+    <input type="text" name="text" placeholder="Place your Bid..." />
+    <input type="hidden" name="property" value="<%=property._id%>" />
+    <input type="submit" />
+  </form>
+  <%}%>
+  <br />
+  <!-- include bids -->
+  <%for(bid of property.bids){%>
+  <p><%-include('_bid');%></p>
+  <%}%>
+</li>

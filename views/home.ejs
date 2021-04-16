@@ -48,6 +48,7 @@
       <p style="position: relative">
         <img
           src="<%=dealer.avatar%>"
+          alt="dealer"
           style="width: 45px; height: 45px; border-radius: 50%; cursor: pointer"
         />
         <b
@@ -68,7 +69,7 @@
 <section style="width: 70%" id="property-list">
   <ul>
     <%for(property of properties){%>
-    <p><%-include('_property');%></p>
+    <p><%-include('_propertys');%></p>
     <%}%>
   </ul>
 </section>

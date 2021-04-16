@@ -3,7 +3,6 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const User = require("../../models/user");
 const env = require("../../config/env");
-const { json } = require("body-parser");
 
 module.exports.owner = async function (req, res) {
   try {
@@ -32,12 +31,12 @@ module.exports.createSession = async function (req, res) {
           }),
         });
       } else {
-        return res.status(400).json({
+        return res.status(404).json({
           message: "Password Not Matched",
         });
       }
     } else {
-      return res.status(422).json({
+      return res.status(404).json({
         message: "Invalid User || SIGN UP YOUR DETAILS",
       });
     }

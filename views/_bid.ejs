@@ -1,22 +1,25 @@
 <div style="margin-left: 10px" id="bid-list">
   <ul>
     <li id="<%=bid._id%>">
+      <img
+        src="<%=bid.user.avatar%>"
+        style="width: 45px; height: 45px; border-radius: 50px"
+      />
+      <p><%=bid.text%></p>
+      <!-- if user is tenant then delete the bid -->
       <%if(locals.user && !locals.user.isAdmin &&
       locals.user.id==bid.user.id){%>
-      <img
-        src="<%=bid.user.avatar%>"
-        style="width: 45px; height: 45px; border-radius: 50px"
-      />
-      <p><%=bid.text%></p>
       <p><a href="/bid/destroy/<%=bid.id%>">Delete </a></p>
-      <%}else{%>
-      <img
-        src="<%=bid.user.avatar%>"
-        style="width: 45px; height: 45px; border-radius: 50px"
-      />
-      <p><%=bid.text%></p>
-      <p><%=bid.user.name%></p>
 
+      <%}%>
+
+      <!-- if user is owner of property then they will accept or rejct the status -->
+      <% if(locals.user && locals.user.isAdmin &&
+      locals.user.id==property.user.id){%>
+      <div class="status-button">
+        <a><button>Accepted</button></a>
+        <a><button>Rejected</button></a>
+      </div>
       <%}%>
     </li>
   </ul>
