@@ -8,27 +8,24 @@ const Property = require("../models/property");
 
 module.exports.profile = async function (req, res) {
   try {
-    let properties = await Property.find({})
-      .sort("-createdAt")
-      .populate("user")
+    let bid = await Bid.find({})
+      .populate("user", "-password")
       .populate({
-        path: "bids",
+        path: "property",
         populate: {
           path: "user",
         },
       });
 
-    let bid = await Bid.find({});
-
     let user = await User.findById(req.params.id);
 
     return res.render("user_profile", {
       title: "FindMyHome || Profile",
-      bid: bid,
-      property: properties,
+      bids: bid,
       user: user,
     });
   } catch (err) {
+    console.log(err);
     return res.status(404).json({
       message: "Internal server error",
     });

@@ -20,6 +20,13 @@
 <p><%=user.phone%></p>
 <p><a href="/users/destroysession/<%=user.id%>">SignOut</a></p>
 <p><a href="/">Home</a></p>
+<p><h1>My Bids</h1></p>
+<section>
+    <%for(bid of bids){%>
+      <p> <%-include('_profilebid')%></p> 
+    <%}%> 
+  
+  </section>
 <% }else{%>
 <p><a href="/users/signin">SignIn</a></p>
 <p><a href="/users/signup">Signup</a></p>

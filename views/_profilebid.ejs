@@ -1,0 +1,24 @@
+<ul>
+  <li style="background-color: aliceblue">
+    <%if(locals.user.id==bid.user.id){%>
+    <p>Owner:<b><%=bid.property.user.name%></b></p>
+    <p>Property Details:<b> <%=bid.property.text%></b></p>
+    <p>Property Place:<b> <%=bid.property.place%></b></p>
+    <p>Property Price:<b> <%=bid.property.price%></b></p>
+    <div>
+      <ul>
+        <li>
+          <h2>My Bid</h2>
+          <img
+            src="<%=bid.user.avatar%>"
+            style="width: 45px; height: 45px; border-radius: 50px"
+          />
+          <p><%=bid.text%></p>
+          <!-- if id match with bid user id then show the delete button  -->
+          <p><a href="/bid/destroy/<%=bid.id%>">Delete </a></p>
+        </li>
+      </ul>
+    </div>
+    <%}%>
+  </li>
+</ul>

@@ -14,7 +14,7 @@ const bidSchema = new mongoose.Schema(
     //on which property user bid
     property: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Property",
+      ref: "Land",
     },
   },
   {
