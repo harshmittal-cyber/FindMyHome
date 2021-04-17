@@ -1641,3 +1641,15 @@
 [0mGET /users/profile/60609325e5ff222f18cce448 [32m200[0m 1846.790 ms - 2899[0m
 [0mGET /users/destroysession/60609325e5ff222f18cce448 [36m302[0m 648.290 ms - 46[0m
 [0mGET / [36m304[0m 1874.761 ms - -[0m
+[0mGET / [32m200[0m 5398.691 ms - 4262[0m
+[0mGET /users/signin [36m304[0m 322.766 ms - -[0m
+[0mPOST /users/createSession [36m302[0m 617.482 ms - 70[0m
+[0mGET /users/signin [32m200[0m 310.579 ms - 1124[0m
+[0mPOST /users/createSession [36m302[0m 706.104 ms - 70[0m
+[0mGET /users/signin [36m304[0m 315.751 ms - -[0m
+[0mGET /owner/signin [36m304[0m 367.678 ms - -[0m
+[0mPOST /owner/create-session/ [36m302[0m 615.049 ms - 46[0m
+[0mGET / [32m200[0m 4012.818 ms - 5414[0m
+[0mGET /owner/profile/605f1f2f81836e566c8de861 [32m200[0m 2524.660 ms - 3784[0m
+[0mPOST /owner/update/605f1f2f81836e566c8de861 [0m-[0m - ms - -[0m
+[0mGET /owner/profile/605f1f2f81836e566c8de861 [32m200[0m 3225.788 ms - 3784[0m

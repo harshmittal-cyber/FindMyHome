@@ -4,7 +4,6 @@ const bcrypt = require("bcrypt");
 const fs = require("fs");
 const path = require("path");
 const Bid = require("../models/bid");
-const Property = require("../models/property");
 
 module.exports.profile = async function (req, res) {
   try {
