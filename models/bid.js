@@ -16,6 +16,11 @@ const bidSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Land",
     },
+    status: {
+      type: String,
+      ref: "Status",
+      default: "Pending",
+    },
   },
   {
     timestamps: true,

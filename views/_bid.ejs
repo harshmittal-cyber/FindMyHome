@@ -6,20 +6,13 @@
         style="width: 45px; height: 45px; border-radius: 50px"
       />
       <p><%=bid.text%></p>
-      <!-- if user is tenant then delete the bid -->
+
+      <!-- if user is tenant -->
       <%if(locals.user && !locals.user.isAdmin &&
       locals.user.id==bid.user.id){%>
+
       <p><a href="/bid/destroy/<%=bid.id%>">Delete </a></p>
 
-      <%}%>
-
-      <!-- if user is owner of property then they will accept or rejct the status -->
-      <% if(locals.user && locals.user.isAdmin &&
-      locals.user.id==property.user.id){%>
-      <div class="status-button">
-        <a><button>Accepted</button></a>
-        <a><button>Rejected</button></a>
-      </div>
       <%}%>
     </li>
   </ul>
