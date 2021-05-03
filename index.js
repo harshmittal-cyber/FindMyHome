@@ -20,7 +20,8 @@ const customMware = require("./config/middleware");
 const bodyParser = require("body-parser");
 const path = require("path");
 const dotenv = require("dotenv").config();
-
+//this is used so that other website fetch the data from our server
+const cors = require("cors");
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -83,15 +84,9 @@ app.use(flash());
 app.use(customMware.setFlash);
 
 app.use("/", require("./routes/index"));
-//api routes
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin,X-Requested-With,Content-Type,Accept"
-  );
-});
 
+app.use(cors());
+//api routes
 app.use("/api", require("./api_routes"));
 
 app.listen(port, function (err) {
