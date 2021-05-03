@@ -84,6 +84,14 @@ app.use(customMware.setFlash);
 
 app.use("/", require("./routes/index"));
 //api routes
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin,X-Requested-With,Content-Type,Accept"
+  );
+});
+
 app.use("/api", require("./api_routes"));
 
 app.listen(port, function (err) {
