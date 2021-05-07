@@ -7,7 +7,7 @@ module.exports.index = async function (req, res) {
   try {
     let property = await Property.find({})
       .sort("-createdAt")
-      .populate("user", "name")
+      .populate("user", "-password")
       .populate({
         path: "bids",
         populate: {
