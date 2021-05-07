@@ -6,13 +6,11 @@
         style="width: 45px; height: 45px; border-radius: 50px"
       />
       <p><%=bid.text%></p>
-
       <!-- if user is tenant -->
       <%if(locals.user && !locals.user.isAdmin &&
       locals.user.id==bid.user.id){%>
 
       <p><a href="/bid/destroy/<%=bid.id%>">Delete </a></p>
-
       <%}%>
     </li>
   </ul>

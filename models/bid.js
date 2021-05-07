@@ -11,15 +11,10 @@ const bidSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
-    //on which property user bid
+    //on which property user bi d
     property: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Land",
-    },
-    status: {
-      type: String,
-      ref: "Status",
-      default: "Pending",
     },
   },
   {

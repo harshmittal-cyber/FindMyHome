@@ -11,7 +11,6 @@ module.exports.createBid = async function (req, res) {
         property: req.body.property,
         user: req.user._id,
       });
-      console.log(bid.status);
       if (req.xhr) {
         bid = await bid.populate("user").execPopulate();
         console.log(bid);
