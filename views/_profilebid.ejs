@@ -14,17 +14,7 @@
             style="width: 45px; height: 45px; border-radius: 50px"
           />
           <p><%=bid.text%></p>
-          <!-- bid status=1 -->
-          <%if(bid.status==1){%>
-          <p>Status:<b>Accepted</b></p>
-          <!-- bid status=2 -->
-          <%}else if(bid.status==2){%>
-          <p>Status:<b>Rejected</b></p>
-          <!-- bid status=3 -->
-          <%}else if(bid.status==3){%>
-
-          <p>Status:<b>Pending</b></p>
-          <%}%>
+          <p>Status:<b><%=bid.status%></b></p>
           <!-- if id match with bid user id then show the delete button  -->
           <p><a href="/bid/destroy/<%=bid.id%>">Delete </a></p>
         </li>

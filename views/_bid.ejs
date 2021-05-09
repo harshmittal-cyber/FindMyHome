@@ -6,11 +6,34 @@
         style="width: 45px; height: 45px; border-radius: 50px"
       />
       <p><%=bid.text%></p>
+      <p>Status:<b><%=bid.status%></b></p>
       <!-- if user is tenant -->
       <%if(locals.user && !locals.user.isAdmin &&
       locals.user.id==bid.user.id){%>
 
       <p><a href="/bid/destroy/<%=bid.id%>">Delete </a></p>
+      <%}%>
+      <!-- status links -->
+      <%if(locals.user && locals.user.isAdmin &&
+      locals.user.id==property.user.id){%>
+      <p>
+        Accepted option:
+        <a
+          data-status="<%=bid.status%>"
+          class="bid_status"
+          href="/bid/status/?id=<%=bid._id%>&type=Accepted"
+          >Accepted</a
+        >
+      </p>
+      <p>
+        Rejected option:
+        <a
+          data-status="<%=bid.status%>"
+          class="bid_status"
+          href="/bid/status/?id=<%=bid._id%>&type=Rejected"
+          >Rejected</a
+        >
+      </p>
       <%}%>
     </li>
   </ul>

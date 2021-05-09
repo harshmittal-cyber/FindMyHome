@@ -59,3 +59,41 @@ module.exports.destroyBid = async function (req, res) {
     });
   }
 };
+
+module.exports.status = async function (req, res) {
+  try {
+    if (req.query.type == "Accepted") {
+      let bid = await Bid.findByIdAndUpdate(
+        req.query.id,
+        {
+          status: req.query.type,
+        },
+        function (err, bid) {
+          console.log("Status updated");
+          bid.save();
+        }
+      );
+      return res.status(200).json({
+        bid: bid,
+      });
+    } else if ((req.query.type = "Rejected")) {
+      let bid = await Bid.findByIdAndUpdate(
+        req.query.id,
+        {
+          status: req.query.type,
+        },
+        function (err, bid) {
+          console.log("Status updated");
+          bid.save();
+        }
+      );
+      return res.status(200).json({
+        bids: bid,
+      });
+    }
+  } catch (err) {
+    return res.status(500).json({
+      message: "Internal Server Error",
+    });
+  }
+};

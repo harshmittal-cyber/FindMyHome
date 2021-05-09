@@ -49,9 +49,9 @@ let storage = multer.diskStorage({
   },
 });
 
-ownerSchema.statics.uploadedimage = multer({ storage: storage }).single(
-  "avatar"
-);
+ownerSchema.statics.uploadedimage = multer({
+  storage: storage,
+}).single("avatar");
 ownerSchema.statics.avatarPath = IMG_PATH;
 
 const Owner = mongoose.model("Owner", ownerSchema);

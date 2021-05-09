@@ -25,5 +25,16 @@ router.get(
   },
   bid_controller.destroyBid
 );
+router.post(
+  "/status",
+  function (req, res, next) {
+    if (req.isAuthenticated && req.user.isAdmin) {
+      return next();
+    } else if (req.isAuthenticated && !req.user.isAdmin) {
+      return res.redirect("back");
+    }
+  },
+  bid_controller.status
+);
 
 module.exports = router;

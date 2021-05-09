@@ -73,3 +73,11 @@
     <%}%>
   </ul>
 </section>
+
+<script src="/js/status.js"></script>
+<script>
+  $(".bid_status").each(function () {
+    let self = this;
+    let statusupdate = new StatusUpdate(self);
+  });
+</script>

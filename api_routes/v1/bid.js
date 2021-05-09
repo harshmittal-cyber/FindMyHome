@@ -15,4 +15,6 @@ router.delete(
   bid_controller.destroyBid
 );
 
+router.post("/status", bid_controller.status);
+
 module.exports = router;
