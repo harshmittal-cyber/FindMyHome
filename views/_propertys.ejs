@@ -20,7 +20,6 @@
     >Delete</a
   >
   <%}%>
-
   <!-- if user is tenant the show the bid form -->
   <%if(locals.user && !locals.user.isAdmin){%>
   <form method="POST" action="/bid/create" id="bid-form">

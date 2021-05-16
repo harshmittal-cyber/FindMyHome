@@ -15,11 +15,23 @@
   <input type="submit" />
 </form>
 <div id="owner-profile-update">
-<img
+<!-- <img
+  src="<%=user.avatar%>"
+  alt="<%=user.name%>"
+  style="height: 100px; width: 100px"
+/> -->
+<%if(user.avatar){%>
+  <img
   src="<%=user.avatar%>"
   alt="<%=user.name%>"
   style="height: 100px; width: 100px"
 />
+  <%}else{%>
+    <img src="/image/download.jpg"  style="height: 100px; width: 100px">
+<%}%>
+
+
+
 <p><%=user.name%></p>
 <p><%=user.email%></p> 
 <p><%=user.phone%></p>

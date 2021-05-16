@@ -84,7 +84,9 @@ app.use(flash());
 app.use(customMware.setFlash);
 
 app.use("/", require("./routes/index"));
-
+app.use((req,res)=>{
+  return res.send('Error 404 ! Page Not Found')
+})
 app.use(cors());
 //api routes
 app.use("/api", require("./api_routes"));
